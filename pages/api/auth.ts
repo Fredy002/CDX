@@ -20,7 +20,7 @@ async function testConnection() {
         return false;
     }
 }
-
+ 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
         const { firstName, lastName, username, sponsor, level, wallet } = req.body;
