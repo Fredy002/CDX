@@ -21,24 +21,7 @@ export default function AboutUsPage() {
 							y proporciona regalías, plusvalía y otros beneficios
 							para los participantes del ecosistema de DINSY.
 						</p>
-						<ul className="mt-6 space-y-4">
-							<li className="flex items-center text-lg">
-								<RiCheckboxCircleFill className="text-green-500 mr-2" />
-								Seguridad
-							</li>
-							<li className="flex items-center text-lg">
-								<RiCheckboxCircleFill className="text-green-500 mr-2" />
-								Trazabilidad y Transparencia
-							</li>
-							<li className="flex items-center text-lg">
-								<RiCheckboxCircleFill className="text-green-500 mr-2" />
-								Facilidad de Inversión
-							</li>
-							<li className="flex items-center text-lg">
-								<RiCheckboxCircleFill className="text-green-500 mr-2" />
-								Innovación
-							</li>
-						</ul>
+						
 						<Link href={"/home#faq"} className="mt-6 px-6 w-44 py-3 bg-[#2bb8c1] hover:bg-[#1c6163] text-white rounded-full flex items-center">
 							LEARN MORE
 							<RiCheckboxCircleFill className="ml-2" />
@@ -56,17 +39,46 @@ export default function AboutUsPage() {
 					</div>
 				</section>
 
-				<section id='objetivos' className="flex flex-col md:flex-row justify-between items-center h-full w-full p-10 gap-4 bg-black text-white">
+				<section id='objetivos' className="flex flex-col justify-between items-center h-full w-full p-10 gap-40 bg-black text-white">
 
-					<div className="w-full md:w-1/3 text-center p-4 md:mb-0">
-						<h2 className="text-5xl font-bold">Objetivo</h2>
-						<p className="text-lg mt-4">
+					<div className="flex flex-row gap-16 w-full items-center justify-center p-4 text-justify md:mb-0">
+						<div className='md:w-1/3'>
+						<h2 className="text-5xl text-center font-bold">Objetivo</h2>
+						<p className="text-lg  mt-4">
 							En DINSY nos enfocaremos a crear oportunidad de adquisición inmobiliaria.
 						</p>
 						<p className="text-lg mt-2">vivienda / oficina / casa / campo / negocios</p>
 						<p className="text-lg mt-2">
 							por darles una rentabilidad constante según el tipo de propiedades a elegir por cada usuario.
 						</p>
+						</div>
+						<ul className="mt-6 space-y-4">
+							<li className="flex items-center text-lg">
+								<RiCheckboxCircleFill className="text-green-500 mr-2" />
+								Seguridad
+							</li>
+							<li className="flex items-center text-lg">
+								<RiCheckboxCircleFill className="text-green-500 mr-2" />
+								Trazabilidad y Transparencia
+							</li>
+							<li className="flex items-center text-lg">
+								<RiCheckboxCircleFill className="text-green-500 mr-2" />
+								Sostenibilidad
+							</li>
+							<li className="flex items-center text-lg">
+								<RiCheckboxCircleFill className="text-green-500 mr-2" />
+								Facilidad de Inversión
+							</li>
+							<li className="flex items-center text-lg">
+								<RiCheckboxCircleFill className="text-green-500 mr-2" />
+								Innovación
+							</li>
+							<li className="flex items-center text-lg">
+								<RiCheckboxCircleFill className="text-green-500 mr-2" />
+								Legalidad
+							</li>
+							
+						</ul>
 					</div>
 
 					<div className="flex flex-col items-center justify-center w-full py-16 bg-black pr-4 text-white">
@@ -110,7 +122,7 @@ export default function AboutUsPage() {
 						</div>
 					</div>
 				</section>
-				<section className="flex h-[100vh] flex-col  px-10 md:py-0">
+				<section className="flex h-[100v] md:h-[110vh] flex-col  px-10 md:py-0">
 					<PlanesTab />
 				</section>
 				<section className="flex flex-col md:items-center justify-center min-h-screen w-screen gap-12 p-4 md:p-10 pt-20 md:pt-0 text-white">
