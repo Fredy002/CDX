@@ -1,6 +1,3 @@
-import dotenv from 'dotenv';
-dotenv.config();
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
@@ -34,6 +31,7 @@ const nextConfig = {
             },
         ];
     },
+    // output: 'export',
 };
 
 export default nextConfig;
