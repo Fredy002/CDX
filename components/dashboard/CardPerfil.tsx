@@ -9,7 +9,7 @@ const CardPerfil = () => {
     if (!user) {
         return <div className='w-full flex justify-center items-center h-96 text-white'>
             Loading...
-        </div>; // O algún componente de carga apropiado
+        </div>;
     }
 
     return (
