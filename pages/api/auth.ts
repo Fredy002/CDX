@@ -1,19 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import mysql from 'mysql2/promise';
 
-// Asegúrate de que las variables de entorno están definidas
-const dbHost = process.env.DB_HOST || 'localhost';
-const dbUser = process.env.DB_USER || 'root';
-const dbPassword = process.env.DB_PASSWORD || 'root';
-const dbName = process.env.DB_NAME || 'mydatabase';
-const dbPort = process.env.DB_PORT ? parseInt(process.env.DB_PORT, 10) : 3306;
-
 const db = mysql.createPool({
-    host: dbHost,
-    user: dbUser,
-    password: dbPassword,
-    database: dbName,
-    port: dbPort,
+    host: 'auth-db1436.hstgr.io',
+    user: 'u408348937_cdx',
+    password: 'Jorgitotuterror666',
+    database: 'u408348937_dinsy',
 });
 
 async function testConnection() {
