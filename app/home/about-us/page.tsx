@@ -41,7 +41,7 @@ export default function AboutUsPage() {
 
 				<section id='objetivos' className="flex flex-col justify-between items-center h-full w-full p-10 gap-40 bg-black text-white">
 
-					<div className="flex flex-row gap-16 w-full items-center justify-center p-4 text-justify md:mb-0">
+					<div className="flex flex-col sm:flex-row gap-16 w-full items-center justify-center p-4 text-justify md:mb-0">
 						<div className='md:w-1/3'>
 						<h2 className="text-5xl text-center font-bold">Objetivo</h2>
 						<p className="text-lg  mt-4">
@@ -122,7 +122,7 @@ export default function AboutUsPage() {
 						</div>
 					</div>
 				</section>
-				<section className="flex h-[100v] md:h-[110vh] flex-col  px-10 md:py-0">
+				<section className="flex h-[90vh] md:h-[110vh] flex-col  px-10 md:py-0">
 					<PlanesTab />
 				</section>
 				<section className="flex flex-col md:items-center justify-center min-h-screen w-screen gap-12 p-4 md:p-10 pt-20 md:pt-0 text-white">
