@@ -24,6 +24,15 @@ export default function Login({ setShowForm }: { setShowForm: (show: boolean) =>
 
     const handleWalletConnect = async () => {
         try {
+            // Intentar desconectar la cuenta actual primero
+            if (ethereum && ethereum.selectedAddress) {
+                await ethereum.request({
+                    method: 'wallet_requestPermissions',
+                    params: [{ eth_accounts: {} }],
+                });
+            }
+
+            // Solicitar permisos de conexión
             const accounts = await ethereum.request({ method: "eth_requestAccounts" });
             setWalletAddress(accounts[0]);
             const isRegistered = await checkIfWalletRegistered(accounts[0]);
