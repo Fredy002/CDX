@@ -55,7 +55,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     [wallet]
                 );
                 if (result.length > 0) {
-                    res.status(200).json({ isRegistered: true });
+                    const user = result[0];  // Suponiendo que solo hay un usuario con esa billetera
+                    res.status(200).json({ isRegistered: true, user });
                 } else {
                     res.status(200).json({ isRegistered: false });
                 }
