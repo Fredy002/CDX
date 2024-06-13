@@ -11,8 +11,10 @@ const UserSideBar = () => {
     const pathname = usePathname();
 
     const handleLogout = () => {
-        // Desconectar wallet y limpiar localStorage
+        // Limpiar localStorage
         localStorage.removeItem('walletAddress');
+        localStorage.removeItem('user');
+
         // Redirigir a la página de inicio de sesión
         window.location.href = '/home/auth';
     };
@@ -26,7 +28,6 @@ const UserSideBar = () => {
                     <div className="h-[80px] flex gap-x-1 items-center justify-center w-full">
                         <Image src="/images/logo.png" width={150} height={150} className="drop-shadow-lg" alt="panda_logo" />
                     </div>
-
 
                     <div className="w-full h-[calc(100vh-100px)] rounded-2xl bg-zinc-800 flex flex-col items-center justify-between gap-2 overflow-y-auto">
                         <div className="w-full flex flex-col items-center p-2">
