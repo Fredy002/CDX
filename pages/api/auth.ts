@@ -1,16 +1,14 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import mysql from 'mysql2/promise';
 
-// Configuración de la base de datos
 const db = mysql.createPool({
-    host: 'auth-db1436.hstgr.io',
-    user: 'u408348937_cdx',
-    password: 'Jorgitotuterror666',
-    database: 'u408348937_dinsy',
+    host: 'auth-db1436.hstgr.io' || 'localhost',
+    user: 'u408348937_cdx' || 'root',
+    password: 'Jorgitotuterror666' || 'root',
+    database: 'u408348937_dinsy' || 'mydatabase',
     port: 3306,
 });
 
-// Función para verificar la conexión a la base de datos
 async function testConnection() {
     try {
         const connection = await db.getConnection();
@@ -23,54 +21,39 @@ async function testConnection() {
     }
 }
 
-// Función para manejar la inserción de usuarios y verificación de patrocinadores
-async function handlePostRequest(body: any) {
-    const { firstName, lastName, username, sponsor, level, wallet } = body;
-
-    // Verificar si el patrocinador existe
-    const [sponsorResult]: any = await db.query(
-        'SELECT * FROM users WHERE username = ?',
-        [sponsor]
-    );
-
-    if (sponsorResult.length === 0) {
-        // Si el patrocinador no existe, créalo
-        await db.query(
-            'INSERT INTO users (firstName, lastName, username, sponsor, level, wallet) VALUES (?, ?, ?, ?, ?, ?)',
-            ["Patrocinador", "Desconocido", sponsor, "", 0, null]
-        );
-    }
-
-    await db.query(
-        'INSERT INTO users (firstName, lastName, username, sponsor, level, wallet) VALUES (?, ?, ?, ?, ?, ?)',
-        [firstName, lastName, username, sponsor, level, wallet]
-    );
-
-    return { message: 'User registered successfully' };
-}
-
-// Manejador de la API
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
+        const { firstName, lastName, username, sponsor, level, wallet } = req.body;
         try {
-            const body = JSON.parse(req.body);
-            const response = await handlePostRequest(body);
-            res.status(200).json(response);
+            // Check if the sponsor exists
+            const [sponsorResult]: any = await db.query(
+                'SELECT * FROM users WHERE username = ?',
+                [sponsor]
+            );
+
+            if (sponsorResult.length === 0) {
+                // Si el patrocinador no existe, créalo
+                await db.query(
+                    'INSERT INTO users (firstName, lastName, username, sponsor, level, wallet) VALUES (?, ?, ?, ?, ?, ?)',
+                    ["Patrocinador", "Desconocido", sponsor, "", 0, null]
+                );
+            }
+
+            const [result] = await db.query(
+                'INSERT INTO users (firstName, lastName, username, sponsor, level, wallet) VALUES (?, ?, ?, ?, ?, ?)',
+                [firstName, lastName, username, sponsor, level, wallet]
+            );
+            res.status(200).json({ message: 'User registered successfully' });
         } catch (error) {
-            console.error('Error processing POST request:', error);
-            res.status(500).json({ message: 'Failed to process POST request' });
+            console.error(error);
+            res.status(500).json({ message: 'Failed to register user' });
         }
     } else if (req.method === 'GET') {
-        try {
-            const isConnected = await testConnection();
-            if (isConnected) {
-                res.status(200).json({ message: 'Database connection successful' });
-            } else {
-                res.status(500).json({ message: 'Database connection failed' });
-            }
-        } catch (error) {
-            console.error('Error processing GET request:', error);
-            res.status(500).json({ message: 'Failed to process GET request' });
+        const isConnected = await testConnection();
+        if (isConnected) {
+            res.status(200).json({ message: 'Database connection successful' });
+        } else {
+            res.status(500).json({ message: 'Database connection failed' });
         }
     } else {
         res.status(405).json({ message: 'Method not allowed' });
