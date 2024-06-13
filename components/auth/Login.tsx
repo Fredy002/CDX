@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
+import { FaEthereum } from 'react-icons/fa';
 import { useAuth } from '@/app/context/AuthContext';
 
 declare const ethereum: any;
@@ -65,14 +66,22 @@ export default function Login({ setShowForm }: { setShowForm: (show: boolean) =>
     };
 
     return (
-        <div className="flex justify-center items-center h-full pt-48 pb-64">
-            <div className="w-full max-w-md mx-auto rounded-lg p-8 shadow-xl bg-gray-600">
-                <h2 className="text-3xl font-bold text-center text-white mb-8">Inicia Sesión</h2>
-                <button onClick={handleWalletConnect} className="w-full px-4 py-2 my-2 rounded-md text-sm font-medium bg-blue-500 text-white hover:bg-blue-400">
+        <div className="flex justify-center items-center h-full min-h-screen bg-gradient-to-r">
+            <div className="w-full max-w-md mx-auto rounded-lg p-8 shadow-xl bg-gray-600 bg-opacity-90 backdrop-blur-lg">
+                <h2 className="text-4xl font-bold text-center text-white mb-8">Inicia Sesión</h2>
+                <button
+                    onClick={handleWalletConnect}
+                    className="w-full px-4 py-2 my-2 rounded-md text-lg font-medium bg-blue-600 text-white hover:bg-blue-700 flex items-center justify-center gap-2 transition duration-300 ease-in-out transform hover:scale-105"
+                >
+                    <FaEthereum />
                     Ingresa con Metamask
                 </button>
                 <div className="mt-6 text-center">
-                    <a href="#" className="text-sm text-white hover:underline" onClick={() => setShowForm(true)}>
+                    <a
+                        href="#"
+                        className="text-lg text-blue-400 hover:underline hover:text-blue-100 transition duration-300"
+                        onClick={() => setShowForm(true)}
+                    >
                         No tienes cuenta? Registrate
                     </a>
                 </div>
