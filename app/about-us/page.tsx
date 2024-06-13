@@ -1,3 +1,4 @@
+"use client";
 import { CardStack } from "@/components/ui/CardStack";
 import Image from 'next/image';
 import React from 'react';
@@ -5,16 +6,12 @@ import { CardAboutUs } from '@/components/ui/CardAboutUs';
 import { HoverEffect } from "@/components/ui/CardHoverEffect";
 import { mercado } from "@/utils/mercado";
 import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
-
-export const metadata = {
-	title: 'About Us',
-	description: 'Página sobre nosotros',
-	viewport: {
-		themeColor: '#000000',
-	},
-};
+import { metadata } from './metadata';
 
 export default function AboutUsPage() {
+	console.log('CardAboutUs data:', CardAboutUs);
+	console.log('mercado data:', mercado);
+
 	return (
 		<section className="text-white">
 			<div className="flex flex-col md:flex-row md:items-center w-full">
@@ -55,9 +52,7 @@ export default function AboutUsPage() {
 				</div>
 
 				<div className="flex-1">
-
 					<h2 className="text-3xl font-bold">Problema</h2>
-
 					<p className="mt-4">
 						Dificultad de acceso a capital para invertir en bienes raìces.
 					</p>
@@ -67,12 +62,8 @@ export default function AboutUsPage() {
 					<p className="mt-4">
 						Desconocimiento del mercado inmobiliario.
 					</p>
-					<div className="h-[40rem] flex items-center justify-center w-full">
-
-					</div>
 				</div>
 			</div>
-
 			<div>
 				<div className="flex flex-col md:flex-row md:items-center w-full">
 					<div className="flex-1">
@@ -85,10 +76,8 @@ export default function AboutUsPage() {
 							objectFit="cover"
 						/>
 					</div>
-
 					<div className="flex-1">
 						<h2 className="text-3xl font-bold">Nuestra solución</h2>
-
 						<p className="mt-4">
 							Una plataforma que permite a inversores, independientemente del tamaño de su capital, el ser dueños de una propiedad y recibir retorno proporcional a su aporte
 						</p>
@@ -97,8 +86,7 @@ export default function AboutUsPage() {
 				<div className='flex flex-row gap-10 w-screen items-center justify-center flex-wrap h'>
 					<CardStack items={CardAboutUs} />
 				</div>
-
-				<section className=" flex flex-col w-screen h-screen justify-center items-center">
+				<section className="flex flex-col w-screen h-screen justify-center items-center">
 					<h2 className="text-center text-xl md:text-4xl font-bold text-black dark:text-white">
 						Nuestra misión
 					</h2>
@@ -107,9 +95,7 @@ export default function AboutUsPage() {
 					</p>
 				</section>
 				<section className="flex w-screen h-screen flex-col flex-wrap justify-center items-center">
-
 					<div className="max-w-6xl mx-auto px-8 mt-8 flex flex-wrap flex-col items-center justify-center">
-
 						<HoverEffect items={mercado} />
 					</div>
 				</section>
@@ -141,8 +127,6 @@ export default function AboutUsPage() {
 					</div>
 				</section>
 			</div>
-			<div>
-			</div>
 		</section>
 	);
-};
+}
