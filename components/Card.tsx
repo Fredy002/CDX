@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { FaHeart } from "react-icons/fa6";
+import AddPropertiePage from '../app/dashboard/add-propertie/page';
 
 const formatPriceToTokens = (price: any) => {
     const numberPrice = parseFloat(price.replace(/[^\d.-]/g, ''));
@@ -27,7 +28,7 @@ const Card = ({ inmueble, onDetailClick }: { inmueble: any, onDetailClick: () =>
     const tokenPrice = formatPriceToTokens(inmueble.precio);
 
     return (
-        <div className="bg-transparent shadow-md rounded-xl overflow-hidden w-[400px] h-[550px] bg-white flex flex-col">
+        <div className="bg-transparent shadow-md rounded-xl overflow-hidden w-[320px] h-auto md:w-[400px] md:h-auto bg-white flex flex-col">
             <div className="relative">
                 <Image
                     alt="inmueble"
@@ -42,25 +43,32 @@ const Card = ({ inmueble, onDetailClick }: { inmueble: any, onDetailClick: () =>
                 </div>
             </div>
             <div className="p-4 flex-1">
-                <div className='flex justify-between items-start'>
-                    <div>
-                        <h2 className="text-blue-900 text-xl font-semibold mb-2">{inmueble.tipo}</h2>
-                        <p className="text-gray-500 mb-2">{inmueble.ubicacion}</p>
-                    </div>
-                    <div className="flex justify-center items-center mt-4">
-                        <p className="text-blue-500 font-bold text-xl">
-                            {tokenPrice}
-                        </p>
-                    </div>
+                <div >
+
+                        <h2 className="text-blue-900 text-xl text-center font-semibold mb-1">{inmueble.tipo} EN VENTA</h2>
+                        <p className="text-blue-500 font-bold  text-center text-xl">{tokenPrice} / {inmueble.precio} </p>
+                                      
                 </div>
-                <p className="text-gray-700">{inmueble.descripcion}</p>
+                
+                <p className="text-gray-500  mb-2">{inmueble.ubicacion}</p>
+                <p className="text-gray-700 mb-4">{inmueble.descripcion}</p>
+
+                <div className='flex flex-row justify-center flex-wrap gap-2'>
+                    <p className="text-white text-sm text-semibold border rounded-full w-auto bg-gray-500 p-0.5 px-2 text-center mb-2">  baños {inmueble.baños} </p>
+                    <p className="text-white text-sm text-semibold border rounded-full w-auto bg-gray-500 p-0.5 px-2 text-center mb-2"> cuartos {inmueble.habitaciones}  </p>
+                    <p className="text-white text-sm text-semibold border rounded-full w-auto bg-gray-500 p-0.5 px-2 text-center mb-2">  area {inmueble.area} </p>
+
+                    
+                </div>
+                
+                
             </div>
             <div className="px-4 py-2 bg-gray-100 border-t flex justify-between text-sm text-gray-600">
                 <div className="flex items-center gap-2">
-                    <span>{inmueble.area}</span>
-                    <span>{inmueble.habitaciones}</span>
-                    <span>{inmueble.baños}</span>
-                    <span>{inmueble.estacionamientos}</span>
+                <p className="text-black text-sm border rounded-full w-auto bg-gray-200 p-0.5 px-1 text-center mb-2">  ROI: {inmueble.roi}% </p>
+                <p className="text-black text-sm border rounded-full w-auto bg-gray-200 p-0.5 px-1 text-center mb-2">  PARTICIPANTES: {inmueble.participantes} </p>
+                <p className="text-black text-sm border rounded-full w-auto bg-gray-200 p-0.5 px-1 text-center mb-2">  RENT: ${inmueble.rent} </p>
+                    
                 </div>
                 <div>
                     <button className="text-gray-600" onClick={onDetailClick}>Detail</button>

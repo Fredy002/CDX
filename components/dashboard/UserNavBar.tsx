@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from "next/link";
 import { RiSearchLine, RiNotification3Fill, RiSunFill } from "react-icons/ri";
 import { useAuth } from '@/app/context/AuthContext';
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 const UserNavBar = () => {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -22,20 +23,21 @@ const UserNavBar = () => {
           className="flex text-white font-bold bg-[#0EA5E9] rounded-full shadow-lg p-4 z-50"
           onClick={toggleMenu}
         >
-          Show
+          <GiHamburgerMenu />
         </button>
         {menuVisible && (
-          <div className="absolute top-[80px] left-0 w-full bg-background shadow-lg rounded-lg p-4 z-50 ">
-            <div className='flex flex-col items-center justify-center z-50 bg-black  bg-opacity-85 backdrop-blur h-screen gap-2.5'>
-              <Link className='bg-zinc-900 p-3 rounded-full' href={"/dashboard"}>Dashboard</Link>
-              <Link className='bg-zinc-900 p-3 rounded-full' href={"/dashboard/perfil"}>Perfil</Link>
-              <Link className='bg-zinc-900 p-3 rounded-full' href={"/dashboard/suscripcion"}>Suscripcion</Link>
-              <Link className='bg-zinc-900 p-3 rounded-full' href={"/dashboard/ajustes"}>Horario</Link>
-              <Link className='bg-zinc-900 p-3 rounded-full' href={"/dashboard/properties"}>Mis Propiedades</Link>
-              <Link className='bg-zinc-900 p-3 rounded-full' href={"/dashboard/add-propertie"}>Añadir Propiedad</Link>
-              <Link className='bg-zinc-900 p-3 rounded-full' href={"/dashboard/favorite"}>Favoritos</Link>
-              <Link className='bg-zinc-900 p-3 rounded-full' href={"/dashboard/saved-search"}>Busqueda Guardada</Link>
-              <Link className='bg-zinc-900 p-3 rounded-full' href={"/dashboard/review"}>Comentarios</Link>
+          <div className="absolute top-[80px] left-0 w-full bg-black shadow-lg rounded-lg p-4 z-50 overflow-y-hidden">
+            <div className='flex flex-col items-center justify-center z-50 bg-black  bg-opacity-5 backdrop-blur h-screen gap-2.5 overflow-y-hidden'>
+              <Link className='hover:bg-zinc-900 p-3 rounded-full' href={"/dashboard"}>Dashboard</Link>
+              <Link className='hover:bg-zinc-900 p-3 rounded-full' href={"/dashboard/perfil"}>Perfil</Link>
+              <Link className='hover:bg-zinc-900 p-3 rounded-full' href={"/dashboard/suscripcion"}>Suscripcion</Link>
+              <Link className='hover:bg-zinc-900 p-3 rounded-full' href={"/dashboard/ajustes"}>Ajustes</Link>
+              <Link className='hover:bg-zinc-900 p-3 rounded-full' href={"/dashboard/properties"}>Mis Propiedades</Link>
+              <Link className='hover:bg-zinc-900 p-3 rounded-full' href={"/dashboard/add-propertie"}>Añadir Propiedad</Link>
+              <Link className='hover:bg-zinc-900 p-3 rounded-full' href={"/dashboard/favorite"}>Favoritos</Link>
+              <Link className='hover:bg-zinc-900 p-3 rounded-full' href={"/dashboard/saved-search"}>Busqueda Guardada</Link>
+              <Link className='hover:bg-zinc-900 p-3 rounded-full' href={"/dashboard/review"}>Comentarios</Link>
+              <Link className='hover:bg-zinc-900 p-3 rounded-full' href={"/home/auth"}>Log-out</Link>
             </div>
           </div>
         )}

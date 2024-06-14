@@ -16,12 +16,16 @@ export const inmuebles = [
             lng: -71.5503877
         },
         view: 10,
-        status: 'Active'
+        status: 'Active',
+        roi: 5,
+        rent: 300,
+        participantes: 4
+
     },
     {
         id: 2,
         imagen: 'https://img10.naventcdn.com/avisos/11/00/66/58/08/93/360x266/363807045.jpg?isFirstImage=true',
-        tipo: 'CASA',
+        tipo: 'DEPARTAMENTO',
         ubicacion: 'Umacollo, Yanahuara, Arequipa, AR',
         area: 'N/A',
         habitaciones: '4 dorm.',
@@ -35,6 +39,9 @@ export const inmuebles = [
             lng: -71.5488015
         },
         view: 12,
-        status: 'Pending'
+        status: 'Pending',
+        roi: 10,
+        rent: 800,
+        participantes: 10
     }
 ];

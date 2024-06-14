@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Link from "next/link"
 import { Label, LabelInputContainer } from "../../../components/ui/label";
 import { BottomGradient } from "@/components/ui/BottomGradient";
 import { Input } from "../../../components/ui/input";
