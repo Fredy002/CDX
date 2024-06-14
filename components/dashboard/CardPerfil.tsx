@@ -35,7 +35,7 @@ const CardPerfil = () => {
 
     return (
         <div className="w-full flex justify-center">
-            <div className="w-full max-w-3xl bg-gray-100 shadow-md mb-6 rounded-xl p-16 pb-6 pt-6">
+            <div className=" w-[300px] md:w-[800px]  max-w-3xl bg-gray-100 shadow-md mb-6 rounded-xl p-16 pb-6 pt-6">
                 <div className="flex flex-col md:flex-row justify-between items-center">
                     <div className="flex-1 mb-4 md:mb-0">
                         <div className="flex items-center gap-2 text-lg font-semibold mb-4">

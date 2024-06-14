@@ -17,7 +17,7 @@ const DashboardPage = () => {
             <CardPerfil />
 
             <div className="w-full flex flex-wrap h-full">
-                <div className={`w-full ${selectedInmueble ? 'lg:w-[60%]' : 'lg:w-full'} flex flex-wrap justify-center gap-8 overflow-auto h-full`}>
+                <div className={`w-full  ${selectedInmueble ? 'lg:w-[0%]' : 'lg:w-full'} flex flex-wrap justify-center gap-8 overflow-auto h-full`}>
                     {
                         inmuebles.map((inmueble) => {
                             return <Card key={inmueble.id} inmueble={inmueble} onDetailClick={() => setSelectedInmueble(inmueble)} />
