@@ -11,10 +11,6 @@ const UserSideBar = () => {
     const pathname = usePathname();
 
     const handleLogout = () => {
-        // Limpiar localStorage
-        localStorage.removeItem('walletAddress');
-        localStorage.removeItem('user');
-
         // Redirigir a la página de inicio de sesión
         window.location.href = '/home/auth';
     };
