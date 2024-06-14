@@ -13,19 +13,18 @@ const DashboardPage = () => {
     };
 
     return (
-        <div className="flex flex-col items-start text-black w-full min-h-screen p-4 overflow-auto">
+        <div className="flex flex-col items-start text-black w-full min-h-screen pt-10">
             <CardPerfil />
-
-            <div className="w-full flex flex-wrap h-full">
-                <div className={`w-full ${selectedInmueble ? 'lg:w-[60%]' : 'lg:w-full'} flex flex-wrap justify-center gap-8 overflow-auto h-full`}>
+            <div className="w-full flex flex-1 overflow-hidden">
+                <div className={`flex-1 ${selectedInmueble ? 'lg:w-[60%]' : 'lg:w-full'} pb-20 flex flex-wrap justify-center gap-8 overflow-auto`}>
                     {
-                        inmuebles.map((inmueble) => {
-                            return <Card key={inmueble.id} inmueble={inmueble} onDetailClick={() => setSelectedInmueble(inmueble)} />
-                        })
+                        inmuebles.map((inmueble) => (
+                            <Card key={inmueble.id} inmueble={inmueble} onDetailClick={() => setSelectedInmueble(inmueble)} />
+                        ))
                     }
                 </div>
                 {selectedInmueble && (
-                    <div className='w-full lg:w-[40%] p-6 overflow-auto h-full'>
+                    <div className='flex-shrink-0 w-full lg:w-[40%] p-6 overflow-auto h-full'>
                         <DetailView inmueble={selectedInmueble} onClose={handleCloseDetail} />
                     </div>
                 )}
