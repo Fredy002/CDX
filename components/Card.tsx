@@ -27,7 +27,7 @@ const Card = ({ inmueble, onDetailClick }: { inmueble: any, onDetailClick: () =>
     const tokenPrice = formatPriceToTokens(inmueble.precio);
 
     return (
-        <div className="bg-transparent shadow-md rounded-xl overflow-hidden w-[400px] bg-white flex flex-col">
+        <div className="bg-transparent shadow-md rounded-xl overflow-hidden w-[400px] h-[550px] bg-white flex flex-col">
             <div className="relative">
                 <Image
                     alt="inmueble"
