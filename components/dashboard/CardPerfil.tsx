@@ -7,9 +7,6 @@ import { planes } from '@/utils/planes';
 const CardPerfil = () => {
     const { user } = useAuth();
 
-    // Verificar y mostrar datos del usuario para depuración
-    console.log("Datos del usuario:", user);
-
     if (!user) {
         return (
             <div className="w-full flex justify-center items-center mb-10">
