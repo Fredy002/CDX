@@ -25,6 +25,7 @@ export default function Login({ setShowForm }: { setShowForm: (show: boolean) =>
 
     const handleWalletConnect = async () => {
         try {
+            // Intentar desconectar la cuenta actual primero
             if (ethereum && ethereum.selectedAddress) {
                 await ethereum.request({
                     method: 'wallet_requestPermissions',
@@ -32,9 +33,10 @@ export default function Login({ setShowForm }: { setShowForm: (show: boolean) =>
                 });
             }
 
+            // Solicitar permisos de conexión
             const accounts = await ethereum.request({ method: "eth_requestAccounts" });
             setWalletAddress(accounts[0]);
-            const user = await fetchUserDetails(accounts[0]);
+            const user = await checkIfWalletRegistered(accounts[0]);
             if (user) {
                 setUser(user); // Guardar los datos del usuario en el contexto
                 setAlert({ type: 'success', message: 'Login successful!' });
@@ -42,28 +44,27 @@ export default function Login({ setShowForm }: { setShowForm: (show: boolean) =>
             } else {
                 setAlert({ type: 'warning', message: 'Cuenta no registrada, Registrate' });
             }
-        } catch (error: unknown) {
+        } catch (error) {
             console.log(error);
-            setAlert({ type: 'error', message: `Error connecting to wallet: ${(error as Error).message}. Please try again.` });
+            setAlert({ type: 'error', message: 'Error connecting to wallet. Please try again.' });
         }
     };
 
-    const fetchUserDetails = async (wallet: string) => {
+    const checkIfWalletRegistered = async (wallet: string) => {
         try {
             const response = await fetch(`/api/auth?wallet=${wallet}`);
             if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || 'Failed to fetch user details');
+                throw new Error('Failed to check wallet registration');
             }
             const data = await response.json();
             if (data.isRegistered) {
-                return data.user;
+                return data.user; // Asegúrate de que la respuesta de la API incluye todos los datos del usuario
             } else {
                 return null;
             }
-        } catch (error: unknown) {
+        } catch (error) {
             console.error(error);
-            setAlert({ type: 'error', message: `Failed to fetch user details: ${(error as Error).message}` });
+            setAlert({ type: 'error', message: 'Failed to check wallet registration' });
             return null;
         }
     };
