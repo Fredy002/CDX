@@ -41,7 +41,7 @@ const Card = ({ inmueble, onDetailClick }: { inmueble: any, onDetailClick: () =>
                     <FaHeart />
                 </div>
             </div>
-            <div className="p-4 flex-1 bg-[#DFE3E8]">
+            <div className="p-4 flex-1 bg-white">
                 <div className="text-center mb-4">
                     <h2 className="text-[#2F2D8E] text-xl font-semibold mb-1">{inmueble.tipo} EN VENTA</h2>
                     <p className="text-[#0E0548] font-bold text-lg">{tokenPrice} / {inmueble.precio}</p>
