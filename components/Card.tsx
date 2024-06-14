@@ -54,13 +54,13 @@ const Card = ({ inmueble, onDetailClick }: { inmueble: any, onDetailClick: () =>
                     <p className="text-white text-sm font-semibold border rounded-full w-auto bg-[#39B8BD] p-0.5 px-2 text-center">Área: {inmueble.area}</p>
                 </div>
             </div>
-            <div className="px-4 py-2 bg-[#2F2D8E] border-t flex justify-between text-sm text-[#DFE3E8]">
-                <div className="flex items-center gap-2">
-                    <p className="text-[#2F2D8E] text-sm font-semibold border rounded-full w-auto bg-[#DFE3E8] p-0.5 px-1 text-center">ROI: {inmueble.roi}%</p>
-                    <p className="text-[#2F2D8E] text-sm font-semibold border rounded-full w-auto bg-[#DFE3E8] p-0.5 px-1 text-center">Participantes: {inmueble.participantes}</p>
-                    <p className="text-[#2F2D8E] text-sm font-semibold border rounded-full w-auto bg-[#DFE3E8] p-0.5 px-1 text-center">Rent: ${inmueble.rent}</p>
+            <div className="px-4 py-2 bg-[#2F2D8E] border-t flex flex-col md:flex-row justify-between items-center text-sm text-[#DFE3E8]">
+                <div className="flex flex-wrap gap-2 mb-2 md:mb-0">
+                    <p className="text-[#2F2D8E] text-sm font-semibold border rounded-full w-auto bg-[#DFE3E8] p-0.5 px-2 text-center">ROI: {inmueble.roi}%</p>
+                    <p className="text-[#2F2D8E] text-sm font-semibold border rounded-full w-auto bg-[#DFE3E8] p-0.5 px-2 text-center">Participantes: {inmueble.participantes}</p>
+                    <p className="text-[#2F2D8E] text-sm font-semibold border rounded-full w-auto bg-[#DFE3E8] p-0.5 px-2 text-center">Rent: ${inmueble.rent}</p>
                 </div>
-                <div>
+                <div className="flex-shrink-0">
                     <button className="text-[#39B8BD] font-semibold transition duration-300 hover:text-white" onClick={onDetailClick}>Detail</button>
                 </div>
             </div>
