@@ -22,7 +22,7 @@ const UserSideBar = () => {
             <div className="hidden md:block text-white rounded-lg shadow-lg h-screen w-[300px] md:visible overflow-hidden">
                 <div className="flex flex-row md:flex-col items-center justify-center px-[20px] py-0">
                     <div className="h-[80px] flex gap-x-1 items-center justify-center w-full">
-                        <Image src="/images/logo.png" width={150} height={150} className="drop-shadow-lg" alt="panda_logo" />
+                        <Image src="/images/logo.png" width={100} height={100} className="drop-shadow-lg" alt="panda_logo" style={{ width: 'auto', height: 'auto' }}/>
                     </div>
 
                     <div className="w-full h-[calc(100vh-100px)] rounded-2xl bg-zinc-800 flex flex-col items-center justify-between gap-2 overflow-y-auto">

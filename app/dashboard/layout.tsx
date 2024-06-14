@@ -4,7 +4,7 @@ import UserNavBar from "@/components/dashboard/UserNavBar";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="w-full h-screen bg-zinc-900 flex">
+    <div className="w-full h-screen bg-zinc-800 flex overflow-hidden">
       <UserSideBar />
       <div className="flex-1 flex flex-col h-full">
         <UserNavBar />
