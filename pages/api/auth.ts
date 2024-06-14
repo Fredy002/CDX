@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import mysql from 'mysql2/promise';
 
+// Configuración de la base de datos
 const db = mysql.createPool({
     host: 'auth-db1436.hstgr.io',
     user: 'u408348937_cdx',
@@ -21,7 +22,26 @@ async function testConnection() {
     }
 }
 
+const cors = (req: NextApiRequest, res: NextApiResponse, next: Function) => {
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+    res.setHeader(
+        'Access-Control-Allow-Headers',
+        'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+    );
+
+    if (req.method === 'OPTIONS') {
+        res.status(200).end();
+        return;
+    }
+
+    next();
+};
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+    cors(req, res, () => { });
+
     if (req.method === 'POST') {
         const { firstName, lastName, username, sponsor, level, wallet } = req.body;
         try {
