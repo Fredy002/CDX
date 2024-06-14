@@ -10,7 +10,7 @@ const CardPerfil = () => {
     if (!user) {
         return (
             <div className="w-full flex justify-center items-center mb-10">
-                <div className="w-96 flex justify-center items-center h-96 bg-gradient-to-br from-gray-800 to-gray-900 text-cyan-400 text-2xl font-semibold animate-pulse rounded-2xl">
+                <div className="w-96 flex justify-center items-center h-96 bg-gradient-to-br from-gray-800 to-[#0E0548] text-cyan-400 text-2xl font-semibold animate-pulse rounded-2xl">
                     Loading...
                 </div>
             </div>
@@ -31,33 +31,33 @@ const CardPerfil = () => {
 
     return (
         <div className="w-full flex justify-center">
-            <div className="w-[300px] md:w-[800px] max-w-3xl bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl mb-6 rounded-xl p-16 pb-6 pt-6 transform transition-transform duration-300">
+            <div className="w-[300px] md:w-[800px] max-w-3xl bg-gradient-to-br from-[#2F2D8E] to-[#0E0548] shadow-2xl mb-6 rounded-xl p-16 pb-6 pt-6 transform transition-transform duration-300">
                 <div className="flex flex-col md:flex-row justify-between items-center">
                     <div className="flex-1 mb-4 md:mb-0">
                         <div className="flex items-center gap-2 text-lg font-semibold mb-4">
                             <FaCoins className="text-yellow-500" />
                             <span className="text-cyan-400">Tokens:</span>
-                            <span className="ml-1 text-cyan-200">{tokenAmount}</span>
+                            <span className="ml-1 text-white">{tokenAmount}</span>
                         </div>
                         <div className="flex items-center gap-2 text-lg font-semibold mb-4">
                             <FaDollarSign className="text-green-500" />
                             <span className="text-cyan-400">Contribución:</span>
-                            <span className="ml-1 text-cyan-200">${contributionAmount}</span>
+                            <span className="ml-1 text-white">${contributionAmount}</span>
                         </div>
                         <div className="flex items-center gap-2 text-lg font-semibold mb-4">
                             <FaUsers className="text-blue-500" />
                             <span className="text-cyan-400">Equipo Pool:</span>
-                            <span className="ml-1 text-cyan-200">{teamPool}</span>
+                            <span className="ml-1 text-white">{teamPool}</span>
                         </div>
                         <div className="flex items-center gap-2 text-lg font-semibold mb-4">
                             <FaHome className="text-red-500" />
                             <span className="text-cyan-400">Propiedades:</span>
-                            <span className="ml-1 text-cyan-200">{properties}</span>
+                            <span className="ml-1 text-white">{properties}</span>
                         </div>
                         <div className="flex items-center gap-2 text-lg font-semibold mb-4">
                             <FaMoneyBillWave className="text-purple-500" />
                             <span className="text-cyan-400">Ganancias:</span>
-                            <span className="ml-1 text-cyan-200">${earnings}</span>
+                            <span className="ml-1 text-white">${earnings}</span>
                         </div>
                     </div>
                     <div className="flex-shrink-0 text-center md:text-left m-16">
