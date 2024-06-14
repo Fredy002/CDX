@@ -14,45 +14,47 @@ const PropertiesPage = () => {
 
   return (
     <div className='p-6'>
-      <div className='flex justify-between items-center mb-4'>
-        <p>Showing 1-5 of 40 results</p>
-        <div>
+      <div className='flex gap-2 md:justify-between items-center mb-4'>
+        <p className='text-sm md:text-lg'>Showing 1-5 of 40 results</p>
+        <div >
           <label>Short by:</label>
-          <select className='ml-2 border rounded px-2 py-1'>
-            <option>Newest</option>
+          <select className=' h-10 w-28 ml-2 border rounded px-2 py-1'>
+            <option className='text-xs' >Newest</option>
           </select>
         </div>
       </div>
       <div className='bg-white rounded-lg shadow-md'>
         <table className='w-full'>
-          <thead className='bg-black text-white'>
+          <thead className='bg-black text-white text-xs md:text-lg'>
             <tr>
-              <th className='p-4'>TITULO</th>
-              <th className='p-4'>FECHA</th>
-              <th className='p-4'>VISTAS</th>
-              <th className='p-4'>ESTADO</th>
-              <th className='p-4'>ACCION</th>
+              <th className=' p-2 md:p-4'>TITULO</th>
+              <th className=' p-2 md:p-4'>FECHA</th>
+              <th className=' p-2 md:p-4'>VISTAS</th>
+              <th className=' p-2 md:p-4'>ESTADO</th>
+              <th className=' p-2 md:p-4'>ACCION</th>
             </tr>
           </thead>
           <tbody>
             {inmuebles.map((inmueble) => (
               <tr key={inmueble.id} className='border-t'>
                 <td className='p-4 flex items-center'>
+                  <div className='hidden md:flex'>
                   <Image src={inmueble.imagen} alt={inmueble.tipo} width={64} height={64} className='w-16 h-16 rounded mr-4' />
+                  </div>
                   <div>
-                    <h3 className='font-semibold'>{inmueble.tipo}</h3>
-                    <p className='text-gray-500'>{inmueble.ubicacion}</p>
-                    <p className='font-bold'>{`$${inmueble.precio}`}</p>
+                    <h3 className='font-semibold text-xs md:text-lg'>{inmueble.tipo}</h3>
+                    <p className='text-xs md:text-lg text-gray-500'>{inmueble.ubicacion}</p>
+                    <p className='text-xs md:text-lg font-bold'>{`$${inmueble.precio}`}</p>
                   </div>
                 </td>
-                <td className='p-4 text-gray-500'>
+                <td className='p-4 text-xs md:text-lg text-gray-500'>
                   {inmueble.fecha}
                 </td>
-                <td className='p-4 text-gray-500'>
+                <td className='p-4 text-xs md:text-lg text-gray-500'>
                   {inmueble.view}
                 </td>
                 <td className='p-4'>
-                  <span className={`py-1 px-3 rounded-full ${inmueble.status === 'Active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                  <span className={`py-1 px-3 text-xs md:text-lg rounded-full ${inmueble.status === 'Active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
                     {inmueble.status}
                   </span>
                 </td>
