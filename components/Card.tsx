@@ -27,7 +27,7 @@ const Card = ({ inmueble, onDetailClick }: { inmueble: any, onDetailClick: () =>
     const tokenPrice = formatPriceToTokens(inmueble.precio);
 
     return (
-        <div className="bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl rounded-xl overflow-hidden w-[320px] md:w-[400px] flex flex-col">
+        <div className="bg-gradient-to-br from-[#2F2D8E] to-[#0E0548] shadow-2xl rounded-xl overflow-hidden w-[320px] md:w-[400px] flex flex-col">
             <div className="relative">
                 <Image
                     alt="inmueble"
@@ -41,27 +41,27 @@ const Card = ({ inmueble, onDetailClick }: { inmueble: any, onDetailClick: () =>
                     <FaHeart />
                 </div>
             </div>
-            <div className="p-4 flex-1">
-                <div className="text-center">
-                    <h2 className="text-cyan-400 text-xl font-semibold mb-1">{inmueble.tipo} EN VENTA</h2>
-                    <p className="text-cyan-200 font-bold text-xl">{tokenPrice} / {inmueble.precio} </p>
+            <div className="p-4 flex-1 bg-white">
+                <div className="text-center mb-4">
+                    <h2 className="text-[#2F2D8E] text-xl font-bold mb-1">{inmueble.tipo} EN VENTA</h2>
+                    <p className="text-[#0E0548] font-semibold text-lg">{tokenPrice} / {inmueble.precio}</p>
                 </div>
-                <p className="text-gray-400 mb-2">{inmueble.ubicacion}</p>
-                <p className="text-gray-300 mb-4">{inmueble.descripcion}</p>
-                <div className="flex flex-row justify-center flex-wrap gap-2">
-                    <p className="text-white text-sm font-semibold border rounded-full w-auto bg-cyan-700 p-0.5 px-2 text-center mb-2">Baños {inmueble.baños}</p>
-                    <p className="text-white text-sm font-semibold border rounded-full w-auto bg-cyan-700 p-0.5 px-2 text-center mb-2">Cuartos {inmueble.habitaciones}</p>
-                    <p className="text-white text-sm font-semibold border rounded-full w-auto bg-cyan-700 p-0.5 px-2 text-center mb-2">Área {inmueble.area}</p>
+                <p className="text-[#4B51E3] font-semibold mb-2">{inmueble.ubicacion}</p>
+                <p className="text-[#2F2D8E] mb-4">{inmueble.descripcion}</p>
+                <div className="flex flex-row justify-center flex-wrap gap-2 mb-4">
+                    <p className="text-white text-sm font-semibold border rounded-full w-auto bg-[#39B8BD] p-0.5 px-2 text-center">Baños: {inmueble.baños}</p>
+                    <p className="text-white text-sm font-semibold border rounded-full w-auto bg-[#39B8BD] p-0.5 px-2 text-center">Cuartos: {inmueble.habitaciones}</p>
+                    <p className="text-white text-sm font-semibold border rounded-full w-auto bg-[#39B8BD] p-0.5 px-2 text-center">Área: {inmueble.area}</p>
                 </div>
             </div>
-            <div className="px-4 py-2 bg-gradient-to-r from-gray-700 to-gray-800 border-t flex justify-between text-sm text-gray-300">
+            <div className="px-4 py-2 bg-[#2F2D8E] border-t flex justify-between text-sm text-[#DFE3E8]">
                 <div className="flex items-center gap-2">
-                    <p className="text-white text-sm border rounded-full w-auto bg-gray-700 p-0.5 px-1 text-center mb-2">ROI: {inmueble.roi}%</p>
-                    <p className="text-white text-sm border rounded-full w-auto bg-gray-700 p-0.5 px-1 text-center mb-2">Participantes: {inmueble.participantes}</p>
-                    <p className="text-white text-sm border rounded-full w-auto bg-gray-700 p-0.5 px-1 text-center mb-2">Rent: ${inmueble.rent}</p>
+                    <p className="text-[#2F2D8E] text-sm font-semibold border rounded-full w-auto bg-[#DFE3E8] p-0.5 px-1 text-center">ROI: {inmueble.roi}%</p>
+                    <p className="text-[#2F2D8E] text-sm font-semibold border rounded-full w-auto bg-[#DFE3E8] p-0.5 px-1 text-center">Participantes: {inmueble.participantes}</p>
+                    <p className="text-[#2F2D8E] text-sm font-semibold border rounded-full w-auto bg-[#DFE3E8] p-0.5 px-1 text-center">Rent: ${inmueble.rent}</p>
                 </div>
                 <div>
-                    <button className="text-cyan-400 hover:text-cyan-200 transition duration-300" onClick={onDetailClick}>Detail</button>
+                    <button className="text-[#39B8BD] font-semibold transition duration-300 hover:text-white" onClick={onDetailClick}>Detail</button>
                 </div>
             </div>
         </div>
