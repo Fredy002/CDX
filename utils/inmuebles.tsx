@@ -1,7 +1,7 @@
 export const inmuebles = [
     {
         id: 1,
-        imagen: 'https://img10.naventcdn.com/avisos/111/01/43/42/52/16/360x266/1458685595.jpg?rapc=bXZhX2ltYWdl?isFirstImage=true',
+        imagen: '/images/casa-1.jpg',
         tipo: 'CASA',
         ubicacion: 'Colegio San Jerónimo, Arequipa, AR',
         area: '735 m² tot.',
@@ -24,7 +24,7 @@ export const inmuebles = [
     },
     {
         id: 2,
-        imagen: 'https://img10.naventcdn.com/avisos/11/00/66/58/08/93/360x266/363807045.jpg?isFirstImage=true',
+        imagen: '/images/casa-2.jpg',
         tipo: 'DEPARTAMENTO',
         ubicacion: 'Umacollo, Yanahuara, Arequipa, AR',
         area: 'N/A',
