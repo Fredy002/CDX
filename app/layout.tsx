@@ -35,7 +35,7 @@ export default function RootLayout({
 			>
 				<AuthProvider>
 					<Providers >
-						<div className="relative flex flex-col h-screen overflow-hidden">
+						<div className="relative flex flex-col h-screen overflow-y-auto">
 							{children}
 						</div>
 					</Providers>
