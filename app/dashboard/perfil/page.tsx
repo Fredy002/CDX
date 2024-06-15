@@ -33,7 +33,9 @@ const PerfilPage = () => {
               src={"/images/logo.png"}
               alt={"foto de perfil"}
               width={150}
-              height={150} />
+              height={150}
+              style={{ width: 'auto', height: 'auto' }}
+            />
             <button>
               Subir nueva foto
               <BottomGradient />
