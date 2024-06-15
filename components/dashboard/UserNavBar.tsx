@@ -29,18 +29,18 @@ const UserNavBar = () => {
           <GiHamburgerMenu />
         </button>
         {menuVisible && (
-          <div className="absolute top-[80px] left-0 w-full bg-black shadow-lg rounded-lg p-4 z-50 overflow-y-hidden">
-            <div className='flex flex-col items-center justify-center z-50 bg-black bg-opacity-5 backdrop-blur h-screen gap-2.5 overflow-y-hidden'>
-              <Link className='hover:bg-zinc-900 p-3 rounded-full' href={"/dashboard"} onClick={handleLinkClick}>Dashboard</Link>
-              <Link className='hover:bg-zinc-900 p-3 rounded-full' href={"/dashboard/perfil"} onClick={handleLinkClick}>Perfil</Link>
-              <Link className='hover:bg-zinc-900 p-3 rounded-full' href={"/dashboard/suscripcion"} onClick={handleLinkClick}>Suscripcion</Link>
-              <Link className='hover:bg-zinc-900 p-3 rounded-full' href={"/dashboard/ajustes"} onClick={handleLinkClick}>Ajustes</Link>
-              <Link className='hover:bg-zinc-900 p-3 rounded-full' href={"/dashboard/properties"} onClick={handleLinkClick}>Mis Propiedades</Link>
-              <Link className='hover:bg-zinc-900 p-3 rounded-full' href={"/dashboard/add-propertie"} onClick={handleLinkClick}>Añadir Propiedad</Link>
-              <Link className='hover:bg-zinc-900 p-3 rounded-full' href={"/dashboard/favorite"} onClick={handleLinkClick}>Favoritos</Link>
-              <Link className='hover:bg-zinc-900 p-3 rounded-full' href={"/dashboard/saved-search"} onClick={handleLinkClick}>Busqueda Guardada</Link>
-              <Link className='hover:bg-zinc-900 p-3 rounded-full' href={"/dashboard/review"} onClick={handleLinkClick}>Comentarios</Link>
-              <Link className='hover:bg-zinc-900 p-3 rounded-full' href={"/home/auth"} onClick={handleLinkClick}>Log-out</Link>
+          <div className="absolute top-[80px] left-0 w-full bg-black shadow-lg rounded-lg p-4 z-50 overflow-y-auto">
+            <div className='flex flex-col  items-center pt-8 z-50 bg-black bg-opacity-5 backdrop-blur h-screen gap-2.5 overflow-y-hidden'>
+              <Link className='hover:bg-zinc-900 p-2 rounded-full' href={"/dashboard"} onClick={handleLinkClick}>Dashboard</Link>
+              <Link className='hover:bg-zinc-900 p-2 rounded-full' href={"/dashboard/perfil"} onClick={handleLinkClick}>Perfil</Link>
+              <Link className='hover:bg-zinc-900 p-2 rounded-full' href={"/dashboard/suscripcion"} onClick={handleLinkClick}>Suscripcion</Link>
+              <Link className='hover:bg-zinc-900 p-2 rounded-full' href={"/dashboard/ajustes"} onClick={handleLinkClick}>Ajustes</Link>
+              <Link className='hover:bg-zinc-900 p-2 rounded-full' href={"/dashboard/properties"} onClick={handleLinkClick}>Mis Propiedades</Link>
+              <Link className='hover:bg-zinc-900 p-2 rounded-full' href={"/dashboard/add-propertie"} onClick={handleLinkClick}>Añadir Propiedad</Link>
+              <Link className='hover:bg-zinc-900 p-2 rounded-full' href={"/dashboard/favorite"} onClick={handleLinkClick}>Favoritos</Link>
+              <Link className='hover:bg-zinc-900 p-2 rounded-full' href={"/dashboard/saved-search"} onClick={handleLinkClick}>Busqueda Guardada</Link>
+              <Link className='hover:bg-zinc-900 p-2 rounded-full' href={"/dashboard/review"} onClick={handleLinkClick}>Comentarios</Link>
+              <Link className='hover:bg-zinc-900 p-2 rounded-full' href={"/home/auth"} onClick={handleLinkClick}>Log-out</Link>
             </div>
           </div>
         )}
