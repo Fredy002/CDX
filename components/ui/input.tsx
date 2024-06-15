@@ -31,7 +31,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           
         )
       `,
-       border: '2px solid #3AB8BE',
+      border: '2px solid #3AB8BE',
+
         
         }}
         onMouseMove={handleMouseMove}
