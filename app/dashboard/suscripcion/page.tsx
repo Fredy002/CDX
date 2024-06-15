@@ -1,32 +1,43 @@
+'use client';
 import React from "react";
 import PricingCard from "@/components/dashboard/suscripcion/PricingCard";
 import { planes } from "@/utils/planes";
 import Link from "next/link";
+import { useAuth } from '@/app/context/AuthContext';
 import { RiUserAddFill, RiUserFollowFill, RiUserStarFill, RiUserHeartFill, RiUserReceived2Fill, RiUserSettingsFill, RiUserSharedFill } from 'react-icons/ri';
 
 const SuscripcionPage = () => {
+  const { user } = useAuth();
 
   const planesAux = planes.slice(0, 3);
   const temp = planes.slice(0, 4);
 
+  // Convertir el nivel a número para asegurar la comparación correcta
+  const userLevel = Number(user?.level || 0);
+  const userPlan = planes.find(plan => plan.id === userLevel);
+
+  // Si no hay plan de usuario, mostrar el plan Free
+  const currentPlan = userPlan ? userPlan : { title: "Free", price: "0", subtitle: "Membresía Vitalicia", description: "Acceso limitado debido a que no está afiliado a ningún plan de DINSY. Adquiera un plan ahora y comience a disfrutar de los beneficios!" };
+
   return (
-    <div className="flex flex-col justify-between space-y-10 h-screen overflow-auto p-10">
-      <div className="flex flex-wrap md:flex-nowrap flex-row justify-between gap-6 border-solid border-white border-2 p-4 rounded-2xl">
+    <div className="flex flex-col justify-between space-y-10 h-screen p-10">
+      <div className="flex flex-wrap md:flex-nowrap flex-row justify-between gap-6 border-solid border-white border-2 rounded-2xl p-10">
         <div className="flex flex-col">
-          <h2 className="text-xl font-semibold">Plan Actual (Free)</h2>
+          <h2 className="text-xl font-semibold">Plan Actual ({currentPlan.title})</h2>
           <p>
-            Acceso limitado debido a que no está afiliado a ningún plan de DINSY.
-            Adquiera un plan ahora y comience a disfrutar de los beneficios!
+            {currentPlan.description || "Descripción del plan no disponible"}
           </p>
         </div>
 
         <div className="flex items-center gap-4">
-          <h3 className="text-4xl md:text-6xl">$0</h3>
-          <div>
-            <h2 className="text-lg font-semibold">Membresía Vitalicia</h2>
-            <p>Aún no eres miembro de la comunidad de DINSY</p>
-            <Link href={""} className="text-blue-400">Adquiere un plan Ahora!</Link>
-          </div>
+          <h3 className="text-4xl md:text-6xl">${currentPlan.price}</h3>
+          {!userPlan && (
+            <div>
+              <h2 className="text-lg font-semibold">{currentPlan.subtitle}</h2>
+              <p>Aún no eres miembro de la comunidad de DINSY</p>
+              <Link href={"/dashboard/suscripcion"} className="text-blue-400">Adquiere un plan Ahora!</Link>
+            </div>
+          )}
         </div>
       </div>
 
