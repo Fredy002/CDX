@@ -20,7 +20,7 @@ const SuscripcionPage = () => {
   const currentPlan = userPlan ? userPlan : { title: "Free", price: "0", subtitle: "Membresía Vitalicia", description: "Acceso limitado debido a que no está afiliado a ningún plan de DINSY. Adquiera un plan ahora y comience a disfrutar de los beneficios!" };
 
   return (
-    <div className="flex flex-col justify-between space-y-10 h-screen p-10">
+    <div className="flex flex-col justify-between space-y-10 h-screen px-10 pb-20">
       <div className="flex flex-wrap md:flex-nowrap flex-row justify-between gap-6 border-solid border-white border-2 rounded-2xl p-10">
         <div className="flex flex-col">
           <h2 className="text-xl font-semibold">Plan Actual ({currentPlan.title})</h2>

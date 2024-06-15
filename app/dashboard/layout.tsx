@@ -6,9 +6,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="w-full h-screen bg-zinc-800 flex overflow-hidden">
       <UserSideBar />
-      <div className="flex-1 flex flex-col h-full">
+      <div className="flex-1 flex flex-col h-full overflow-hidden">
         <UserNavBar />
-        <div className="flex-1 overflow-auto">
+        <div className="flex-1  overflow-auto mb-20 py-10 md:mb-3">
           {children}
         </div>
       </div>
