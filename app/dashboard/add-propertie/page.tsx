@@ -6,7 +6,7 @@ import React from 'react'
 const AddPropertiePage = () => {
 
   return (
-    <div className="w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-zinc-800 overflow-auto">
+    <div className="w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-zinc-800 overflow-auto">
       <form className="my-8 flex flex-col">
         <div className="flex flex-col space-y-1 md:space-y-0 md:space-x-2 mb-4 gap-8 ">
           <h2 className='text-3xl font-semibold'>Vista</h2>
