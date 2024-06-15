@@ -28,7 +28,8 @@ const PerfilPage = () => {
       <div className=" w-full h-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-zinc-800 overflow-y-auto" >
         <form className="my-8" onSubmit={handleSubmit}>
 
-          <div className=" text-xl text-neutral-800 dark:text-neutral-200 flex justify-start gap-8">
+          <div className=" text-xl text-neutral-800 dark:text-neutral-200 flex justify-start gap-4 md-gap-8">
+            <div className=' w-[120px] md:w[100px] '>
             <Image
               src={"/images/logo.png"}
               alt={"foto de perfil"}
@@ -36,11 +37,12 @@ const PerfilPage = () => {
               height={150}
               style={{ width: 'auto', height: 'auto' }}
             />
-            <button>
+            </div>
+            <button className=' text-sm md:text-xl '>
               Subir nueva foto
               <BottomGradient />
             </button>
-            <button>
+            <button className=' text-sm md:text-xl '>
               Eliminar
             </button>
           </div>
@@ -108,13 +110,13 @@ const PerfilPage = () => {
                 <Input id="address" placeholder="Jr. lorem 299" type="text" value={user?.address || ''} readOnly />
               </LabelInputContainer>
 
-              <div className='flex flex-row flex-wrap justify-around  w-full  z-50'>
+              <div className='flex flex-row flex-wrap justify-around  w-full  z-20'>
                 <LabelInputContainer className='flex w-auto'>
                   <Label htmlFor="country">País</Label>
                   <Input id="country" placeholder="Perú" type="text" value={user?.country || ''} readOnly />
                 </LabelInputContainer>
 
-                <LabelInputContainer className='flex w-auto'>
+                <LabelInputContainer className='flex w-auto '>
                   <Label htmlFor="city">Ciudad</Label>
                   <Input id="city" placeholder="Lima" type="text" value={user?.city || ''} readOnly />
                 </LabelInputContainer>
