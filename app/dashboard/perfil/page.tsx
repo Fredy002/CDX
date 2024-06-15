@@ -25,7 +25,7 @@ const PerfilPage = () => {
 
   return (
     <div className='flex justify-center h-full  overflow-y-auto'>
-      <div className=" w-full h-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-zinc-800 overflow-y-auto" >
+      <div className=" w-full h-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-zinc-800 overflow-y-auto" >
         <form className="my-8" onSubmit={handleSubmit}>
 
           <div className=" text-xl text-neutral-800 dark:text-neutral-200 flex justify-between md-gap-8">
@@ -39,11 +39,11 @@ const PerfilPage = () => {
             />
             </div>
             <div className='flex gap-6 px-4'>
-            <button className=' text-sm md:text-xl  px-2 md:px-3 rounded-full bg-blue-600 hover:border hover:border-blue-300'>
+            <button className=' text-sm md:text-xl text-white  px-2 md:px-3 rounded-full bg-blue-600 hover:border hover:border-blue-300'>
               Subir foto
               <BottomGradient />
             </button>
-            <button className=' text-sm md:text-xl px-2 md:px-3 rounded-full bg-red-800 hover:border hover:border-red-300'>
+            <button className=' text-sm md:text-xl  text-white  px-2 md:px-3 rounded-full bg-rose-600 hover:border hover:border-red-300'>
               Eliminar foto
             </button>
             </div>
