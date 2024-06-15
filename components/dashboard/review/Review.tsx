@@ -19,18 +19,18 @@ const Review = () => {
       </div>
       <div className="flex flex-col gap-2">
         <div className="flex flex-row justify-between">
-          <div className="flex self-start">
-            <span>Zubayer Al Hasan</span>
-            <span>17 Aug, 23</span>
+          <div className="flex  gap-1">
+            <span className="text-c2 font-semibold" >Zubayer Al Hasan</span>
+            <span className="text-semibold text-zinc-400">17 Aug, 23</span>
           </div>
-          <div className=" flex self-end">
-            <span className=" hidden md:flex ">(3.5 Rating)</span>
-            <div className="flex flex-row items-center gap-0.5">
-              <IoIosStar />
-              <IoIosStar />
-              <IoIosStar />
-              <IoIosStarHalf />
-              <IoIosStarOutline />
+          <div className=" flex  gap-1">
+            <span className=" hidden md:flex  text-zinc-400">(3.5 Rating)</span>
+            <div className="flex flex-row  items-center gap-0.5">
+              <IoIosStar className="text-amber-400"/> 
+              <IoIosStar className="text-amber-400"/>
+              <IoIosStar className="text-amber-400"/>
+              <IoIosStarHalf className="text-amber-400"/>
+              <IoIosStarOutline className="text-amber-400"/>
             </div>
           </div>
         </div>
@@ -43,8 +43,8 @@ const Review = () => {
         </div>
 
         <div className="flex flex-row gap-10 w-full">
-          <button className="flex flex-row gap-1 items-center text-gray-400"><SlLike size={15} />Útil</button>
-          <button className="flex flex-row gap-1 items-center text-gray-400"><TbFlag3 />Flag</button>
+          <button className="flex flex-row gap-1 items-center text-blue-500"><SlLike size={15} />Útil</button>
+          <button className="flex flex-row gap-1 items-center text-rose-500"><TbFlag3 />Flag</button>
           <button className="flex flex-row gap-1 items-center text-gray-400"><RiReplyLine />Responder</button>
         </div>
       </div>
