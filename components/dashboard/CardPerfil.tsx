@@ -31,9 +31,16 @@ const CardPerfil = () => {
 
     return (
         <div className="w-full flex justify-center">
-            <div className="w-[300px] md:w-[800px] max-w-3xl bg-gradient-to-br from-[#2F2D8E] to-[#0E0548] shadow-2xl mb-6 rounded-xl p-16 pb-6 pt-6 transform transition-transform duration-300">
-                <div className="flex flex-col md:flex-row justify-between items-center">
-                    <div className="flex-1 mb-4 md:mb-0">
+            <div className="w-[300px] md:w-[600px] max-w-3xl bg-gradient-to-br from-[#2F2D8E] to-[#0E0548] shadow-2xl mb-6 rounded-xl p-8 pb-6 pt-6 transform transition-transform duration-300 items-center justify-center flex">
+                <div className="flex flex-col items-center md:flex-row md:justify-between">
+                    <div className="text-center md:text-left mb-4 md:mb-0">
+                        <Image src='/images/perfil.png' alt="Perfil" width={100} height={100} className="rounded-full border-4 border-cyan-400 mx-auto md:mx-0" />
+                        <div className="mt-4">
+                            <div className="text-sm text-gray-400">Link de referido:</div>
+                            <div className="text-cyan-400 break-all">{user.referralLink}</div>
+                        </div>
+                    </div>
+                    <div className="flex-1 md:ml-8">
                         <div className="flex items-center gap-2 text-lg font-semibold mb-4">
                             <FaCoins className="text-yellow-500" />
                             <span className="text-cyan-400">Tokens:</span>
@@ -58,13 +65,6 @@ const CardPerfil = () => {
                             <FaMoneyBillWave className="text-purple-500" />
                             <span className="text-cyan-400">Ganancias:</span>
                             <span className="ml-1 text-white">${earnings}</span>
-                        </div>
-                    </div>
-                    <div className="flex-shrink-0 text-center md:text-left m-16">
-                        <Image src='/images/perfil.png' alt="Perfil" width={100} height={100} className="rounded-full border-4 border-cyan-400" />
-                        <div className="mt-4">
-                            <div className="text-sm text-gray-400">Link de referido:</div>
-                            <div className="text-cyan-400 break-all">{user.referralLink}</div>
                         </div>
                     </div>
                 </div>
