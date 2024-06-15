@@ -28,8 +28,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ${visible ? radius + "px" : "0px"} circle at ${mouseX}px ${mouseY}px,
           var(--blue-500),
           transparent 80%
+          
         )
       `,
+       border: '2px solid #3AB8BE',
+        
         }}
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setVisible(true)}
