@@ -28,7 +28,7 @@ const PerfilPage = () => {
       <div className=" w-full h-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-zinc-800 overflow-y-auto" >
         <form className="my-8" onSubmit={handleSubmit}>
 
-          <div className=" text-xl text-neutral-800 dark:text-neutral-200 flex justify-start gap-4 md-gap-8">
+          <div className=" text-xl text-neutral-800 dark:text-neutral-200 flex justify-between md-gap-8">
             <div className=' w-[120px] md:w[100px] '>
             <Image
               src={"/images/logo.png"}
@@ -38,13 +38,15 @@ const PerfilPage = () => {
               style={{ width: 'auto', height: 'auto' }}
             />
             </div>
-            <button className=' text-sm md:text-xl '>
-              Subir nueva foto
+            <div className='flex gap-6 px-4'>
+            <button className=' text-sm md:text-xl  px-2 md:px-3 rounded-full bg-blue-600 hover:border hover:border-blue-300'>
+              Subir foto
               <BottomGradient />
             </button>
-            <button className=' text-sm md:text-xl '>
-              Eliminar
+            <button className=' text-sm md:text-xl px-2 md:px-3 rounded-full bg-red-800 hover:border hover:border-red-300'>
+              Eliminar foto
             </button>
+            </div>
           </div>
           <div className=" flex flex-col  py-3   ">
             <LabelInputContainer>
