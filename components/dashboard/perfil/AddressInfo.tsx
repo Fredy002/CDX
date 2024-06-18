@@ -7,28 +7,28 @@ const AddressInfo = ({ formValues, handleChange, isEditing }: any) => (
         <h2>Dirección y ubicación</h2>
         <LabelInputContainer>
             <Label htmlFor="address">Dirección</Label>
-            <Input id="address" placeholder="Jr. lorem 299" type="text" value={formValues.address} onChange={handleChange} readOnly={!isEditing} />
+            <Input id="address" placeholder="Dirección" type="text" value={formValues.address} onChange={handleChange} readOnly={!isEditing} />
         </LabelInputContainer>
 
         <div className='flex flex-row flex-wrap justify-around w-full z-20'>
             <LabelInputContainer className='flex w-auto'>
                 <Label htmlFor="country">País</Label>
-                <Input id="country" placeholder="Perú" type="text" value={formValues.country} onChange={handleChange} readOnly={!isEditing} />
+                <Input id="country" placeholder="País" type="text" value={formValues.country} onChange={handleChange} readOnly={!isEditing} />
             </LabelInputContainer>
 
             <LabelInputContainer className='flex w-auto'>
                 <Label htmlFor="city">Ciudad</Label>
-                <Input id="city" placeholder="Lima" type="text" value={formValues.city} onChange={handleChange} readOnly={!isEditing} />
+                <Input id="city" placeholder="Ciudad" type="text" value={formValues.city} onChange={handleChange} readOnly={!isEditing} />
             </LabelInputContainer>
 
             <LabelInputContainer className='flex w-auto'>
                 <Label htmlFor="district">Distrito</Label>
-                <Input id="district" placeholder="Miraflores" type="text" value={formValues.district} onChange={handleChange} readOnly={!isEditing} />
+                <Input id="district" placeholder="Distrito" type="text" value={formValues.district} onChange={handleChange} readOnly={!isEditing} />
             </LabelInputContainer>
         </div>
         <LabelInputContainer>
             <Label htmlFor="location">Ubicación</Label>
-            <Input id="location" placeholder="XC32+WD1, Moiran, N105" type="text" value={formValues.location} onChange={handleChange} readOnly={!isEditing} />
+            <Input id="location" placeholder="Ubicación" type="text" value={formValues.location} onChange={handleChange} readOnly={!isEditing} />
         </LabelInputContainer>
         <div className="relative w-full h-96">
             <iframe className="absolute top-0 left-0 w-full h-full"
