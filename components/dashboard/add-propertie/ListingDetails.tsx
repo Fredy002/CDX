@@ -12,74 +12,55 @@ const ListingDetails = ({ formValues, handleChange }: any) => {
             </h2>
             <LabelInputContainer className='py-4'>
                 <Label htmlFor="price">Precio</Label>
-                <Input id="price" placeholder="Precio de la propiedad" type="text" value={formValues.price} onChange={handleChange} />
+                <Input id="price" placeholder="Precio de la propiedad" type="number" value={formValues.price} onChange={handleChange} />
             </LabelInputContainer>
 
             <div className='flex flex-row gap-10 py-6'>
                 <LabelInputContainer>
-                    <Label htmlFor="area">Area</Label>
-                    <Input id="area" placeholder="200m" type="text" value={formValues.area} onChange={handleChange} />
+                    <Label htmlFor="area">Área</Label>
+                    <Input id="area" placeholder="200m" type="number" value={formValues.area} onChange={handleChange} />
                 </LabelInputContainer>
 
-                <div className='flex flex-col gap-1 w-full space-y-2'>
-                    <label htmlFor="bedrooms" className='text-sm font-medium text-black dark:text-white leading-none'>Habitaciones</label>
-                    <select name="bedrooms" id="bedrooms" className="border border-gray-300 rounded-md px-2 py-1.5" value={formValues.bedrooms} onChange={handleChange}>
-                        <option value="0">0</option>
-                        <option value="1">1</option >
-                        <option value="2">2</option>
-                    </select>
-                </div>
-            </div>
-
-            <div className='flex flex-row gap-10 py-5'>
-                <div className='flex flex-col gap-2 w-[50%] space-y-2'>
-                    <label htmlFor="bathrooms" className='text-sm font-medium text-black dark:text-white leading-none'>Baños</label>
-                    <select name="bathrooms" id="bathrooms" className="border border-gray-300 rounded-md px-2 py-1.5" value={formValues.bathrooms} onChange={handleChange}>
-                        <option value="0">0</option>
-                        <option value="1">1</option >
-                        <option value="2">2</option>
-                    </select>
-                </div>
-
-                <div className='flex flex-col gap-2 w-[50%] space-y-2'>
-                    <label htmlFor="kitchens" className='text-sm font-medium text-black dark:text-white leading-none'>Cocinas</label>
-                    <select name="kitchens" id="kitchens" className="border border-gray-300 rounded-md px-2 py-1.5" value={formValues.kitchens} onChange={handleChange}>
-                        <option value="0">0</option>
-                        <option value="1">1</option >
-                        <option value="2">2</option>
-                    </select>
-                </div>
-            </div>
-
-            <div className='flex flex-row gap-10 py-5'>
-                <div className='flex flex-col gap-1 w-full space-y-2'>
-                    <label htmlFor="garages" className='text-sm font-medium text-black dark:text-white leading-none'>Garajes</label>
-                    <select name="garages" id="garages" className="border border-gray-300 rounded-md px-2 py-1.5" value={formValues.garages} onChange={handleChange}>
-                        <option value="0">0</option>
-                        <option value="1">1</option >
-                        <option value="2">2</option>
-                    </select>
-                </div>
                 <LabelInputContainer>
-                    <Label htmlFor="garageArea">Area del Garaje</Label>
-                    <Input id="garageArea" placeholder="20m" type="text" value={formValues.garageArea} onChange={handleChange} />
+                    <Label htmlFor="bedrooms">Habitaciones</Label>
+                    <Input id="bedrooms" placeholder="0" type="number" value={formValues.bedrooms} onChange={handleChange} />
+                </LabelInputContainer>
+            </div>
+
+            <div className='flex flex-row gap-10 py-5'>
+                <LabelInputContainer>
+                    <Label htmlFor="bathrooms">Baños</Label>
+                    <Input id="bathrooms" placeholder="0" type="number" value={formValues.bathrooms} onChange={handleChange} />
+                </LabelInputContainer>
+
+                <LabelInputContainer>
+                    <Label htmlFor="kitchens">Cocinas</Label>
+                    <Input id="kitchens" placeholder="0" type="number" value={formValues.kitchens} onChange={handleChange} />
+                </LabelInputContainer>
+            </div>
+
+            <div className='flex flex-row gap-10 py-5'>
+                <LabelInputContainer>
+                    <Label htmlFor="garages">Garajes</Label>
+                    <Input id="garages" placeholder="0" type="number" value={formValues.garages} onChange={handleChange} />
+                </LabelInputContainer>
+
+                <LabelInputContainer>
+                    <Label htmlFor="garageArea">Área del Garaje</Label>
+                    <Input id="garageArea" placeholder="20m" type="number" value={formValues.garageArea} onChange={handleChange} />
                 </LabelInputContainer>
             </div>
 
             <div className='flex flex-row gap-10 py-5'>
                 <LabelInputContainer>
                     <Label htmlFor="yearBuilt">Año de construcción</Label>
-                    <Input id="yearBuilt" placeholder="Escribe el año" type="text" value={formValues.yearBuilt} onChange={handleChange} />
+                    <Input id="yearBuilt" placeholder="Escribe el año" type="number" value={formValues.yearBuilt} onChange={handleChange} />
                 </LabelInputContainer>
 
-                <div className='flex flex-col gap-1 w-full space-y-2'>
-                    <label htmlFor="flours" className='text-sm font-medium text-black dark:text-white leading-none'>Pisos</label>
-                    <select name="flours" id="flours" className="border border-gray-300 rounded-md px-2 py-1.5" value={formValues.flours} onChange={handleChange}>
-                        <option value="0">0</option>
-                        <option value="1">1</option >
-                        <option value="2">2</option>
-                    </select>
-                </div>
+                <LabelInputContainer>
+                    <Label htmlFor="flours">Pisos</Label>
+                    <Input id="flours" placeholder="0" type="number" value={formValues.flours} onChange={handleChange} />
+                </LabelInputContainer>
             </div>
         </div>
     );
