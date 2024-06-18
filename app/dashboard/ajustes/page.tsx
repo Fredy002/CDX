@@ -1,13 +1,15 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Label, LabelInputContainer } from "../../../components/ui/label";
+import { Label, LabelInputContainer } from "@/components/ui/label";
 import { BottomGradient } from "@/components/ui/BottomGradient";
-import { Input } from "../../../components/ui/input";
-import Link from "next/link";
+import { Input } from "@/components/ui/input";
 import { useAuth } from '@/app/context/AuthContext';
+import { Alert, Stack } from '@mui/material';
+import Link from 'next/link';
 
 const AjustesPage = () => {
   const { user, setUser } = useAuth();
+  const [alert, setAlert] = useState<{ type: 'error' | 'success'; message: string } | null>(null);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -30,13 +32,29 @@ const AjustesPage = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // Check if all required fields are filled
+    const requiredFields = [
+      formData.firstName,
+      formData.lastName,
+      formData.email,
+      formData.phoneNumber,
+    ];
+
+    const areFieldsFilled = requiredFields.every(field => field && field.trim() !== '');
+
+    if (!areFieldsFilled) {
+      setAlert({ type: 'error', message: 'Completa tu información faltante' });
+      return;
+    }
+
     try {
       const response = await fetch('/api/updateUser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, id: user.id }),
       });
 
       if (!response.ok) {
@@ -45,10 +63,11 @@ const AjustesPage = () => {
 
       const updatedUser = await response.json();
       setUser(updatedUser); // Actualizar el contexto del usuario con los nuevos datos
-      console.log("User data updated successfully");
+      setAlert({ type: 'success', message: 'Información guardada exitosamente.' });
 
     } catch (error) {
       console.error('Error updating user data:', error);
+      setAlert({ type: 'error', message: 'Error al guardar la información.' });
     }
   };
 
@@ -81,17 +100,19 @@ const AjustesPage = () => {
 
         <LabelInputContainer className="mb-4">
           <Label htmlFor="phoneNumber">Número Telefónico</Label>
-          <Input id="phoneNumber" placeholder="+51 987 654 321" type="number" value={formData.phoneNumber} onChange={handleInputChange} />
+          <Input id="phoneNumber" placeholder="+51 987 654 321" type="text" value={formData.phoneNumber} onChange={handleInputChange} />
         </LabelInputContainer>
 
         <LabelInputContainer className="mb-4">
           <Label htmlFor="password">Contraseña</Label>
           <Input id="password" placeholder="••••••••••••" type="password" value={formData.password} onChange={handleInputChange} />
         </LabelInputContainer>
+
         <div className="flex flex-row justify-between flex-wrap my-2">
           <p>¿Quieres cambiar tu contraseña? <Link className="text-blue-500" href={"/ajustes"}>Click Aquí</Link></p>
           <Link className="text-blue-500" href={"/ajustes"}>Cambiar contraseña</Link>
         </div>
+
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <button
             className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
@@ -103,12 +124,24 @@ const AjustesPage = () => {
           <button
             className="bg-gradient-to-br hover:text-rose-700 relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
             type="reset"
+            onClick={() => setFormData({
+              firstName: user.firstName,
+              lastName: user.lastName,
+              email: user.email,
+              phoneNumber: user.phoneNumber,
+              password: ''
+            })}
           >
             Cancelar
             <BottomGradient />
           </button>
         </div>
       </form>
+      {alert && (
+        <Stack sx={{ width: '100%' }} spacing={2} className="mt-6">
+          <Alert severity={alert.type}>{alert.message}</Alert>
+        </Stack>
+      )}
     </div>
   );
 }
