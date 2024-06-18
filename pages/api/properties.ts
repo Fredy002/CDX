@@ -33,6 +33,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (req.method === 'POST') {
         const { user_id, propertyTitle, description, categorySelection, price, area, bedrooms, bathrooms, kitchens, garages, garageArea, yearBuilt, flours, address, country, city, zipCode, district, mapLocation, amenities } = req.body;
         try {
+            // Check if user exists
+            const [userResult]: any = await db.query('SELECT id FROM users WHERE id = ?', [user_id]);
+            if (userResult.length === 0) {
+                res.status(404).json({ message: 'Usuario no encontrado' });
+                return;
+            }
+
             await db.query(
                 'INSERT INTO properties (user_id, propertyTitle, description, categorySelection, price, area, bedrooms, bathrooms, kitchens, garages, garageArea, yearBuilt, flours, address, country, city, zipCode, district, mapLocation, amenities) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
                 [user_id, propertyTitle, description, categorySelection, price, area, bedrooms, bathrooms, kitchens, garages, garageArea, yearBuilt, flours, address, country, city, zipCode, district, mapLocation, JSON.stringify(amenities)]
