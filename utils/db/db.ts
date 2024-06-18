@@ -1,10 +1,10 @@
 import mysql from 'mysql2/promise';
 
 const db = mysql.createPool({
-    host: 'auth-db1436.hstgr.io',
-    user: 'u408348937_cdx',
-    password: 'Jorgitotuterror666',
-    database: 'u408348937_dinsy',
+    host: 'localhost',
+    user: 'root',
+    password: 'root',
+    database: 'mydatabase',
     port: 3306,
 });
 
