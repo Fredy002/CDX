@@ -5,14 +5,11 @@ import { Input } from '@/components/ui/input';
 import { Label, LabelInputContainer } from '@/components/ui/label';
 
 const ListingDetails = ({ formValues, handleChange }: any) => {
-    const handleCustomNumberChange = (e: any, id: string) => {
-        const { value } = e.target;
-        handleChange({ target: { id, value } });
-    };
-
     return (
         <div className='flex flex-col py-10'>
-            <h2 className='text-3xl font-semibold'>Detalles de la Propiedad</h2>
+            <h2 className='text-3xl font-semibold'>
+                Detalles de la Propiedad
+            </h2>
             <LabelInputContainer className='py-4'>
                 <Label htmlFor="price">Precio</Label>
                 <Input id="price" placeholder="Precio de la propiedad" type="text" value={formValues.price} onChange={handleChange} />
@@ -30,11 +27,7 @@ const ListingDetails = ({ formValues, handleChange }: any) => {
                         <option value="0">0</option>
                         <option value="1">1</option >
                         <option value="2">2</option>
-                        <option value="custom">Otro...</option>
                     </select>
-                    {formValues.bedrooms === 'custom' && (
-                        <Input type="number" id="bedrooms" placeholder="Ingresa el número de habitaciones" value={formValues.bedrooms} onChange={(e) => handleCustomNumberChange(e, 'bedrooms')} />
-                    )}
                 </div>
             </div>
 
@@ -45,11 +38,7 @@ const ListingDetails = ({ formValues, handleChange }: any) => {
                         <option value="0">0</option>
                         <option value="1">1</option >
                         <option value="2">2</option>
-                        <option value="custom">Otro...</option>
                     </select>
-                    {formValues.bathrooms === 'custom' && (
-                        <Input type="number" id="bathrooms" placeholder="Ingresa el número de baños" value={formValues.bathrooms} onChange={(e) => handleCustomNumberChange(e, 'bathrooms')} />
-                    )}
                 </div>
 
                 <div className='flex flex-col gap-2 w-[50%] space-y-2'>
@@ -58,11 +47,7 @@ const ListingDetails = ({ formValues, handleChange }: any) => {
                         <option value="0">0</option>
                         <option value="1">1</option >
                         <option value="2">2</option>
-                        <option value="custom">Otro...</option>
                     </select>
-                    {formValues.kitchens === 'custom' && (
-                        <Input type="number" id="kitchens" placeholder="Ingresa el número de cocinas" value={formValues.kitchens} onChange={(e) => handleCustomNumberChange(e, 'kitchens')} />
-                    )}
                 </div>
             </div>
 
@@ -73,11 +58,7 @@ const ListingDetails = ({ formValues, handleChange }: any) => {
                         <option value="0">0</option>
                         <option value="1">1</option >
                         <option value="2">2</option>
-                        <option value="custom">Otro...</option>
                     </select>
-                    {formValues.garages === 'custom' && (
-                        <Input type="number" id="garages" placeholder="Ingresa el número de garajes" value={formValues.garages} onChange={(e) => handleCustomNumberChange(e, 'garages')} />
-                    )}
                 </div>
                 <LabelInputContainer>
                     <Label htmlFor="garageArea">Area del Garaje</Label>
@@ -97,11 +78,7 @@ const ListingDetails = ({ formValues, handleChange }: any) => {
                         <option value="0">0</option>
                         <option value="1">1</option >
                         <option value="2">2</option>
-                        <option value="custom">Otro...</option>
                     </select>
-                    {formValues.flours === 'custom' && (
-                        <Input type="number" id="flours" placeholder="Ingresa el número de pisos" value={formValues.flours} onChange={(e) => handleCustomNumberChange(e, 'flours')} />
-                    )}
                 </div>
             </div>
         </div>
