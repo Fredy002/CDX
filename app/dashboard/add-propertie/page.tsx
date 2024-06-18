@@ -7,6 +7,7 @@ import ListingDetails from '@/components/dashboard/add-propertie/ListingDetails'
 import FileUpload from '@/components/dashboard/add-propertie/FileUpload';
 import Amenities from '@/components/dashboard/add-propertie/Amenities';
 import LocationDetails from '@/components/dashboard/add-propertie/LocationDetails';
+import { useAuth } from '@/app/context/AuthContext';
 
 type FormValues = {
   propertyTitle: string;
@@ -36,6 +37,7 @@ type AlertType = {
 };
 
 const AddPropertiePage = () => {
+  const { user } = useAuth();
   const [formValues, setFormValues] = useState<FormValues>({
     propertyTitle: '',
     description: '',
@@ -79,10 +81,14 @@ const AddPropertiePage = () => {
     }
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Verificar que todos los campos obligatorios estén completos
+    if (!user) {
+      setAlert({ type: 'error', message: 'Debe estar registrado para añadir una propiedad.' });
+      return;
+    }
+
     const requiredFields = ['propertyTitle', 'description', 'categorySelection', 'price', 'area', 'bedrooms', 'bathrooms', 'kitchens', 'garages', 'garageArea', 'yearBuilt', 'flours', 'address', 'country', 'city', 'zipCode', 'district', 'mapLocation'];
 
     for (const field of requiredFields) {
@@ -92,9 +98,29 @@ const AddPropertiePage = () => {
       }
     }
 
-    localStorage.setItem('formValues', JSON.stringify(formValues));
-    console.log('Form values saved:', JSON.stringify(formValues));
-    setAlert({ type: 'success', message: 'Propiedad guardada exitosamente.' });
+    const propertyData = {
+      user_id: user.id,
+      ...formValues,
+    };
+
+    try {
+      const response = await fetch('/api/properties', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(propertyData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al guardar la propiedad.');
+      }
+
+      setAlert({ type: 'success', message: 'Propiedad guardada exitosamente.' });
+    } catch (error) {
+      console.error(error);
+      setAlert({ type: 'error', message: 'Error al guardar la propiedad.' });
+    }
   };
 
   return (
