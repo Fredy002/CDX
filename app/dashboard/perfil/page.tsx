@@ -12,8 +12,7 @@ import AddressInfo from '@/components/dashboard/perfil/AddressInfo';
 
 const PerfilPage = () => {
   const [alert, setAlert] = useState<{ type: 'error' | 'success'; message: string } | null>(null);
-  const { user } = useAuth();
-  const [walletAddress, setWalletAddress] = useState<string | null>(null);
+  const { user, setUser } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [formValues, setFormValues] = useState({
     username: '',
@@ -29,7 +28,8 @@ const PerfilPage = () => {
     country: '',
     city: '',
     district: '',
-    location: ''
+    location: '',
+    password: ''
   });
 
   useEffect(() => {
@@ -48,15 +48,11 @@ const PerfilPage = () => {
         country: user.country || '',
         city: user.city || '',
         district: user.district || '',
-        location: user.location || ''
+        location: user.location || '',
+        password: ''
       });
     }
   }, [user]);
-
-  useEffect(() => {
-    const address = localStorage.getItem('walletAddress');
-    setWalletAddress(address);
-  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
@@ -82,12 +78,13 @@ const PerfilPage = () => {
       country: user?.country || '',
       city: user?.city || '',
       district: user?.district || '',
-      location: user?.location || ''
+      location: user?.location || '',
+      password: ''
     });
     setIsEditing(false);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const requiredFields = [
@@ -112,10 +109,28 @@ const PerfilPage = () => {
       return;
     }
 
-    // Handle form submission to save the changes
-    console.log('Form submitted:', formValues);
-    setIsEditing(false);
-    setAlert({ type: 'success', message: 'Información guardada exitosamente.' });
+    try {
+      const response = await fetch('/api/updateUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ...formValues, id: user.id }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update user data');
+      }
+
+      const updatedUser = await response.json();
+      setUser(updatedUser); // Actualizar el contexto del usuario con los nuevos datos
+      setAlert({ type: 'success', message: 'Información guardada exitosamente.' });
+      setIsEditing(false);
+
+    } catch (error) {
+      console.error('Error updating user data:', error);
+      setAlert({ type: 'error', message: 'Error al guardar la información.' });
+    }
   };
 
   return (
