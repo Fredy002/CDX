@@ -49,9 +49,6 @@ const FileUpload = () => {
                 <Input type='text' value={currentImageUrl} onChange={(e) => setCurrentImageUrl(e.target.value)} />
                 <button className='bg-blue-500 text-white p-2 rounded-xl' onClick={handleImageChange}>Añadir Foto</button>
             </div>
-            <div className='flex justify-center py-4'>
-                <button className='bg-blue-500 text-white p-3 rounded-xl' onClick={() => console.log('Imágenes a subir:', imageUrls)}>Subir Fotos</button>
-            </div>
         </div>
     );
 }
