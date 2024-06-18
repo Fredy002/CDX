@@ -29,6 +29,7 @@ type FormValues = {
   district: string;
   mapLocation: string;
   amenities: { [key: string]: boolean };
+  imageUrls: string[];
 };
 
 type AlertType = {
@@ -58,6 +59,7 @@ const AddPropertiePage = () => {
     district: '',
     mapLocation: '',
     amenities: {},
+    imageUrls: []
   });
 
   const [alert, setAlert] = useState<AlertType | null>(null);
@@ -81,6 +83,13 @@ const AddPropertiePage = () => {
     }
   };
 
+  const handleImageChange = (imageUrls: string[]) => {
+    setFormValues((prevState) => ({
+      ...prevState,
+      imageUrls,
+    }));
+  };
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -92,7 +101,7 @@ const AddPropertiePage = () => {
     const requiredFields = ['propertyTitle', 'description', 'categorySelection', 'price', 'area', 'bedrooms', 'bathrooms', 'kitchens', 'garages', 'garageArea', 'yearBuilt', 'flours', 'address', 'country', 'city', 'zipCode', 'district', 'mapLocation'];
 
     for (const field of requiredFields) {
-      if (!formValues[field as keyof FormValues]) {
+      if (!formValues[field as keyof FormValues] || formValues[field as keyof FormValues] === '') {
         setAlert({ type: 'error', message: `El campo ${field} es obligatorio.` });
         return;
       }
@@ -128,7 +137,7 @@ const AddPropertiePage = () => {
       <form className="my-8 flex flex-col" onSubmit={handleSubmit}>
         <PropertyDetails formValues={formValues} handleChange={handleChange} />
         <ListingDetails formValues={formValues} handleChange={handleChange} />
-        <FileUpload />
+        <FileUpload formValues={formValues} handleImageChange={handleImageChange} />
         <Amenities formValues={formValues} handleChange={handleChange} />
         <LocationDetails formValues={formValues} handleChange={handleChange} />
         <button type="submit" className='bg-blue-500 text-white p-3 rounded-xl'>Guardar Propiedad</button>
