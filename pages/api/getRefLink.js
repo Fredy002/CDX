@@ -1,5 +1,5 @@
 // pages/api/getRefLink.js
-import { getUserRefLink } from '../../lib/db';
+// import { getUserRefLink } from '../../lib/db';
 
 export default async (req, res) => {
     const { userId } = req.query;
