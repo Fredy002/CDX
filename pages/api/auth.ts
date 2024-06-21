@@ -1,10 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-<<<<<<< HEAD
-import mysql from 'mysql';
-
-=======
 import mysql from 'mysql2/promise';
->>>>>>> 29865f9d1eec8b31b6dd5e2fa72845171d7770c8
 
 // Configuración de la base de datos
 const db = mysql.createPool({
@@ -15,27 +10,27 @@ const db = mysql.createPool({
     port: 3306,
 });
 
-<<<<<<< HEAD
+// Generar enlace de referido
 export const generateReferralLink = (username: string) => {
     return `https://dinsy.pro/auth?ref=${username}`;
 };
 
+// Obtener enlace de referido por nombre de usuario
 export async function getRefLinkByUsername(username: string): Promise<string | null> {
-    return new Promise((resolve, reject) => {
-        db.query('SELECT refLink FROM users WHERE username = ?', [username], (err, rows) => {
-            if (err) {
-                console.error('Error fetching refLink:', err);
-                resolve(null);
-            } else {
-                if (rows.length > 0) {
-                    resolve(rows[0].refLink);
-                } else {
-                    resolve(null); // No se encontró el usuario o refLink no está definido
-                }
-            }
-        });
-    });
-=======
+    try {
+        const [rows]: any = await db.query('SELECT refLink FROM users WHERE username = ?', [username]);
+        if (rows.length > 0) {
+            return rows[0].refLink;
+        } else {
+            return null; // No se encontró el usuario o refLink no está definido
+        }
+    } catch (err) {
+        console.error('Error fetching refLink:', err);
+        return null;
+    }
+}
+
+// Probar conexión a la base de datos
 async function testConnection() {
     try {
         const connection = await db.getConnection();
@@ -46,9 +41,9 @@ async function testConnection() {
         console.error('Database connection failed:', error);
         return false;
     }
->>>>>>> 29865f9d1eec8b31b6dd5e2fa72845171d7770c8
 }
 
+// Configuración de CORS
 const cors = (req: NextApiRequest, res: NextApiResponse, next: Function) => {
     res.setHeader('Access-Control-Allow-Credentials', 'true');
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -66,11 +61,11 @@ const cors = (req: NextApiRequest, res: NextApiResponse, next: Function) => {
     next();
 };
 
+// Manejador de la API
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     cors(req, res, () => { });
 
     if (req.method === 'POST') {
-<<<<<<< HEAD
         const { firstName, lastName, username, sponsor, level, wallet, refLink } = req.body;
 
         // Generar refLink si no se ha recibido desde el frontend
@@ -78,24 +73,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const finalSponsor = sponsor || 'Master'; // Establecer sponsor como "Master" si no se proporciona desde el frontend
 
         try {
-            db.query(
-                'INSERT INTO users (firstName, lastName, username, sponsor, level, wallet, refLink) VALUES (?, ?, ?, ?, ?, ?, ?)',
-                [firstName, lastName, username, finalSponsor, level, wallet, finalRefLink],
-                (err, result) => {
-                    if (err) {
-                        console.error('Failed to register user:', err);
-                        res.status(500).json({ message: 'Failed to register user' });
-                    } else {
-                        res.status(200).json({ message: 'User registered successfully', refLink: finalRefLink });
-                    }
-                }
-            );
+            const [sponsorResult]: any = await db.query('SELECT * FROM users WHERE username = ?', [sponsor]);
+
+            if (sponsorResult.length === 0) {
+                await db.query('INSERT INTO users (firstName, lastName, username, sponsor, level, wallet) VALUES (?, ?, ?, ?, ?, ?)', ["Patrocinador", "Desconocido", sponsor, "", 0, null]);
+            }
+
+            await db.query('INSERT INTO users (firstName, lastName, username, sponsor, level, wallet, refLink) VALUES (?, ?, ?, ?, ?, ?, ?)', [firstName, lastName, username, finalSponsor, level, wallet, finalRefLink]);
+            res.status(200).json({ message: 'User registered successfully', refLink: finalRefLink });
         } catch (error) {
-            console.error('Error inserting user:', error);
+            console.error('Failed to register user:', error);
             res.status(500).json({ message: 'Failed to register user' });
         }
     } else if (req.method === 'GET') {
-        const { username } = req.query;
+        const { username, wallet } = req.query;
+
         if (username) {
             try {
                 const refLink = await getRefLinkByUsername(username as string);
@@ -109,40 +101,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 console.error('Error fetching refLink:', error);
                 res.status(500).json({ message: 'Failed to fetch refLink' });
             }
-        } else {
-            res.status(400).json({ message: 'Missing username' });
-=======
-        const { firstName, lastName, username, sponsor, level, wallet } = req.body;
-        try {
-            const [sponsorResult]: any = await db.query(
-                'SELECT * FROM users WHERE username = ?',
-                [sponsor]
-            );
-
-            if (sponsorResult.length === 0) {
-                await db.query(
-                    'INSERT INTO users (firstName, lastName, username, sponsor, level, wallet) VALUES (?, ?, ?, ?, ?, ?)',
-                    ["Patrocinador", "Desconocido", sponsor, "", 0, null]
-                );
-            }
-
-            await db.query(
-                'INSERT INTO users (firstName, lastName, username, sponsor, level, wallet) VALUES (?, ?, ?, ?, ?, ?)',
-                [firstName, lastName, username, sponsor, level, wallet]
-            );
-            res.status(200).json({ message: 'User registered successfully' });
-        } catch (error) {
-            console.error(error);
-            res.status(500).json({ message: 'Failed to register user' });
-        }
-    } else if (req.method === 'GET') {
-        const { wallet } = req.query;
-        if (wallet) {
+        } else if (wallet) {
             try {
-                const [result]: any = await db.query(
-                    'SELECT * FROM users WHERE wallet = ?',
-                    [wallet]
-                );
+                const [result]: any = await db.query('SELECT * FROM users WHERE wallet = ?', [wallet]);
                 if (result.length > 0) {
                     res.status(200).json({ isRegistered: true, user: result[0] });
                 } else {
@@ -159,7 +120,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             } else {
                 res.status(500).json({ message: 'Database connection failed' });
             }
->>>>>>> 29865f9d1eec8b31b6dd5e2fa72845171d7770c8
         }
     } else {
         res.status(405).json({ message: 'Method not allowed' });

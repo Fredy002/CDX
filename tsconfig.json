@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-<<<<<<< HEAD
     "lib": [
       "dom",
       "dom.iterable",
@@ -11,11 +10,11 @@
     "strict": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "node", // Opté por "node" porque es más común para la mayoría de los proyectos Next.js
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "noEmit": false,
+    "noEmit": false, // Mantener "false" para permitir la generación de archivos .d.ts
     "incremental": true,
     "types": [
       "node",
@@ -28,29 +27,13 @@
     "baseUrl": ".",
     "paths": {
       "@/*": [
-        "./*",
-        "pages/*"  // Agregamos esta línea para resolver desde el directorio 'pages'
+        "./*"
       ]
     },
-=======
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
->>>>>>> 29865f9d1eec8b31b6dd5e2fa72845171d7770c8
     "plugins": [
       {
         "name": "next"
       }
-<<<<<<< HEAD
     ]
   },
   "include": [
@@ -63,14 +46,4 @@
   "exclude": [
     "node_modules"
   ]
-=======
-    ],
-    "paths": {
-      "@/*": ["./*"]
-    }
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"],
-  "typeRoots": ["./node_modules/@types", "./types"]
->>>>>>> 29865f9d1eec8b31b6dd5e2fa72845171d7770c8
 }
