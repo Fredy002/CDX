@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useAuth } from '@/app/context/AuthContext';
 import { FaCoins, FaDollarSign, FaUsers, FaHome, FaMoneyBillWave, FaCheck } from 'react-icons/fa';
+=======
+import React from 'react';
+import Image from 'next/image';
+import { useAuth } from '@/app/context/AuthContext';
+import { FaCoins, FaDollarSign, FaUsers, FaHome, FaMoneyBillWave } from 'react-icons/fa';
+>>>>>>> 29865f9d1eec8b31b6dd5e2fa72845171d7770c8
 import { planes } from '@/utils/planes';
 
 const CardPerfil = () => {
     const { user } = useAuth();
+<<<<<<< HEAD
     const [refLink, setRefLink] = useState('');
     const [copySuccess, setCopySuccess] = useState(false);
 
@@ -23,6 +31,8 @@ const CardPerfil = () => {
                 .catch(error => console.error('Error fetching refLink:', error));
         }
     }, [user]);
+=======
+>>>>>>> 29865f9d1eec8b31b6dd5e2fa72845171d7770c8
 
     if (!user) {
         return (
@@ -34,6 +44,7 @@ const CardPerfil = () => {
         );
     }
 
+<<<<<<< HEAD
     const handleCopyClick = () => {
         if (refLink) {
             navigator.clipboard.writeText(refLink).then(() => {
@@ -43,12 +54,19 @@ const CardPerfil = () => {
         }
     };
 
+=======
+    // Convertir el nivel a número para asegurar la comparación correcta
+>>>>>>> 29865f9d1eec8b31b6dd5e2fa72845171d7770c8
     const userLevel = Number(user.level);
     const userPlan = planes.find(plan => plan.id === userLevel);
 
     const tokenAmount = userPlan ? userPlan.price : 'N/A';
     const contributionAmount = userPlan ? userPlan.price : 'N/A';
 
+<<<<<<< HEAD
+=======
+    // Asignar valores predeterminados si no están definidos
+>>>>>>> 29865f9d1eec8b31b6dd5e2fa72845171d7770c8
     const teamPool = user.sponsor || 'N/A';
     const properties = user.properties || 0;
     const earnings = user.earnings || 0;
@@ -61,6 +79,7 @@ const CardPerfil = () => {
                         <Image src='/images/perfil.png' alt="Perfil" width={100} height={100} className="rounded-full border-4 border-cyan-400 mx-auto md:mx-0" />
                         <div className="mt-4">
                             <div className="text-sm text-gray-400">Link de referido:</div>
+<<<<<<< HEAD
                             {refLink ? (
                                 <button 
                                     onClick={handleCopyClick}
@@ -76,6 +95,9 @@ const CardPerfil = () => {
                                     <FaCheck className="mr-1" /> Link copiado!
                                 </div>
                             )}
+=======
+                            <div className="text-cyan-400 break-all">{user.referralLink}</div>
+>>>>>>> 29865f9d1eec8b31b6dd5e2fa72845171d7770c8
                         </div>
                     </div>
                     <div className="flex-1 md:ml-8">
